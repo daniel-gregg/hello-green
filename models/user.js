@@ -18,6 +18,14 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        //prefix - e.g. "Prof."
+
+        //firstname and lastname split
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -25,10 +33,6 @@ User.init(
             validate: {
                 isEmail: true,
             },
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
         },
         password: {
             type: DataTypes.STRING,

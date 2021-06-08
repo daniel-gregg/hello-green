@@ -12,8 +12,10 @@ Brief.init(
       autoIncrement: true,
     },
 
+    //shortSummary <75 words
+
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, // < 200 words
     },
 
     content: {
@@ -42,7 +44,7 @@ Brief.init(
       },
     },
 
-    brief_owner_id: {
+    owner_id: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
