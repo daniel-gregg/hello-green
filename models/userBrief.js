@@ -12,12 +12,6 @@ class User extends Model {
 // Remember id, created_date, updated_date columns are created for you.
 User.init(
     {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
