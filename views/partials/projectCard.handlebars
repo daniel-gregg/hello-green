@@ -1,0 +1,33 @@
+{{!-- 
+  var context = {
+    "imageUrl" : "",
+    "imgDescription" : "",
+    "title": "",
+    "date": "",
+    "shortSummary": "",
+    "authors" : [
+        {"firstname": "Daniel", "lastName": "Gregg", "owner": true},
+        {"firstname": "Tim", "lastName": "McKeaveney", "owner": false},
+    ],
+}
+ --}}
+
+<div class="rounded overflow-hidden shadow-lg">
+    <img class="w-full" src={{imageUrl}} alt={{imgDescription}}>
+    <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2">{{title}}</div>
+    <p class="text-gray-600">{{date}}</p>
+    <p class="text-gray-700 text-base">
+        {{shortSummary}}
+    </p>
+    </div>
+    <div class="font-bold text-xl mb-2">
+        {{#each authors}}
+            {{#if owner}}
+                <span class="inline-block bg-gray-300 rounded-md px-3 py-1 text-sm font-bold text-black mr-2 mb-2">{{this}}</span>
+            {{else}}
+                <span class="inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-semi-bold text-gray-600 mr-2 mb-2">{{this}}</span>
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
