@@ -1,0 +1,93 @@
+[
+  {
+    "first_name": "Ernst", 
+    "last_name": "Blofeld",
+    "email": "Ernst.Blofeld@spectre.evil.org",
+    "password": "failureisnottolerated",
+    "imageUrl": "ErnstBlofeld.png",
+    "imageDescription": "Ernst Blofeld, Thunderball"
+  },
+  {
+    "first_name": "Emilio", 
+    "last_name": "Largo",
+    "email": "Emilio.Largo@spectre.evil.org",
+    "password": "failureisnottolerated",
+    "imageUrl": "EmilioLargo.webp",
+    "imageDescription": "Emilio Largo"
+  },
+  {
+    "first_name": "Rosa", 
+    "last_name": "Klebb",
+    "email": "Rosa.Klebb@spectre.evil.org",
+    "password": "failureisnottolerated",
+    "imageUrl": "RosaKlebb.jpg",
+    "imageDescription": "Rosa Klebb"
+  },
+  {
+    "first_name": "Irma", 
+    "last_name": "Bunt",
+    "email": "Irma.Bunt@spectre.evil.org",
+    "password": "failureisnottolerated",
+    "imageUrl": "IrmaBunt.webp",
+    "imageDescription": "Irma Bunt"
+  },
+  {
+    "first_name": "Tamil", 
+    "last_name": "Rahani",
+    "email": "Tamil.Rahani@spectre.evil.org",
+    "password": "failureisnottolerated",
+    "imageUrl": "",
+    "imageDescription": ""
+  },
+  {
+    "first_name": "Nena", 
+    "last_name": "Bismaquer",
+    "email": "Nena.Bismaquer@spectre.evil.org",
+    "password": "failureisnottolerated"
+  },
+  {
+    "title": "Mr",
+    "last_name": "White",
+    "email": "Mr.White@spectre.evil.org",
+    "password": "failureisnottolerated"
+  },
+  {
+    "last_name": "Le Chiffre",
+    "email": "LeChiffre@spectre.evil.org",
+    "password": "failureisnottolerated"
+  },
+  {
+    "first_name": "Dominic", 
+    "last_name": "Greene",
+    "email": "Dominic.Greene@spectre.evil.org",
+    "password": "failureisnottolerated"
+  },
+  {
+    "first_name": "Raoul", 
+    "last_name": "Silva",
+    "email": "Raoul.Silva@spectre.evil.org",
+    "password": "failureisnottolerated"
+  },
+  {
+    "title": "Mr.",
+    "last_name": "Hinx",
+    "email": "Mr.Hinx@spectre.evil.org",
+    "password": "failureisnottolerated"
+  },
+  {
+    "last_name": "Safin",
+    "email": "Safin@spectre.evil.org",
+    "password": "failureisnottolerated"
+  },
+  {
+    "title": "Dr",
+    "last_name": "Claw",
+    "email": "Dr.Claw@mad.evil.org",
+    "password": "i'llgetyounexttime,gadget!nexttime!"
+  },
+  {
+    "name": "Amiko",
+    "email": "amiko2k20@aol.com",
+    "password": "password12345"
+  }
+]
