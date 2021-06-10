@@ -40,10 +40,50 @@ router.get('/', (req, res) => {
             ],
         },
         ]
+
+    peopleCards = [
+        {
+            "imageUrl" : "https://placeimg.com/640/480/people",
+            "imgDescription" : "A person placeholder image",
+            "prefix" : "Professor",
+            "firstName": "Spaniel",
+            "lastName": "Boone",
+            "text": "Spaniel Boone is a frontierDog who wears a coonskin hat",
+            "posts" : [
+                {"title":"Brief1","date":"date1"},
+                {"title":"Brief2","date":"date2"},
+            ],
+        },
+        {
+            "imageUrl" : "https://placeimg.com/640/480/people",
+            "imgDescription" : "A person placeholder image",
+            "prefix" : "Professor",
+            "firstName": "Spaniel",
+            "lastName": "Boone",
+            "text": "Spaniel Boone is a frontierDog who wears a coonskin hat",
+            "posts" : [
+                {"title":"Brief1","date":"date1"},
+                {"title":"Brief2","date":"date2"},
+            ],
+        },
+        {
+            "imageUrl" : "https://placeimg.com/640/480/people",
+            "imgDescription" : "A person placeholder image",
+            "prefix" : "Professor",
+            "firstName": "Spaniel",
+            "lastName": "Boone",
+            "text": "Spaniel Boone is a frontierDog who wears a coonskin hat",
+            "posts" : [
+                {"title":"Brief1","date":"date1"},
+                {"title":"Brief2","date":"date2"},
+            ],
+        },
+    ]
     res.render('index', {
         user: req.session.user,
         loggedIn: req.session.loggedIn,
         briefs: projectBriefs,
+        people: peopleCards,
     });
 });
 
