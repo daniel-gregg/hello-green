@@ -1,9 +1,10 @@
+'use strict';
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class BriefKeyword extends Model {}
+class Collaborator extends Model { }
 
-BriefKeyword.init(
+Collaborator.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -20,22 +21,21 @@ BriefKeyword.init(
             },
         },
 
-        keyword_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'keyword',
+                model: 'user',
                 key: 'id',
             },
         },
     },
-
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'brief_keyword',
+        modelName: 'collaborator',
     }
 );
 
-module.exports = BriefKeyword;
+module.exports = Collaborator;
