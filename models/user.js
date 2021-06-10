@@ -18,12 +18,17 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        //prefix - e.g. "Prof."
-
-        //firstname and lastname split
-        name: {
+        title: {
+            type: DataTypes.STRING,
+            allowNull:true,
+        },
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        first_name: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
 
         email: {

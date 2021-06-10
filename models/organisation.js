@@ -14,6 +14,11 @@ Organisation.init(
             autoIncrement: true,
         },
 
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
         about: {
             type: DataTypes.STRING,
             allowNull: true,
