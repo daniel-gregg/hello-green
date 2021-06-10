@@ -1,7 +1,31 @@
+{{!-- 
+  briefs is an array of 3 project cards that are randomly filled from the briefs table.
+  An example of an array with one brieff is shown below. 
+  briefs = [
+    {
+        "imageUrl" : "",
+        "imgDescription" : "",
+        "title": "",
+        "date": "",
+        "shortSummary": "",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+        ],
+        },
+    ]
+
+ --}}
 <div class="container">
     <div class="flex justify-center">
         <div class="w-full">
-            <h1>Welcome Home</h1>
+            <h1>Hello Green</h1>
+        </div>
+        
+        <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+            {{#each briefs as |brief|}}
+                {{> projectCard}}
+            {{/each}}
         </div>
     </div>
 </div>
