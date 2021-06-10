@@ -1,16 +1,57 @@
 const sequelize = require('../config/connection');
-const { User } = require('../models');
+const { User, Brief, Keyword, Organisation } = require('../models');
 
 const userData = require('./data/userData.json');
+const briefData = require('./data/briefData.json');
+const keywordData = require('./data/keywordData.json');
+const organisationsData = require('./data/organisationsData.json');
+
 // const projectData = require('./projectData.json');
 
-const seedDatabase = async () => {
-    await sequelize.sync({ force: true });
-
+const seedUsers() = async () => {
+    
     const users = await User.bulkCreate(userData, {
         individualHooks: true,
         returning: true,
     });
+    
+
+}
+
+const seedBriefs() = async () => {
+
+
+
+}
+
+const seedOrganisations() = async () => {
+
+
+
+}
+
+
+const seedKeywords() = async () => {
+
+
+
+}
+
+
+
+
+
+
+
+
+
+const seedDatabase = async () => {
+    await sequelize.sync({ force: true });
+
+
+    const organisations = await Organisation.bulkcreate(organisationsData);
+    const briefs = await Brief.bulkcreate(briefData);
+    const keywords = await Keyword.bulkcreate(keywordData);
 
     // for (const project of projectData) {
     //     await Project.create({
@@ -21,5 +62,24 @@ const seedDatabase = async () => {
 
     process.exit(0);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 seedDatabase();
