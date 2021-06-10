@@ -1,0 +1,12 @@
+# DB DETAILS
+DB_HOSTNAME=localhost
+DB_USERNAME=root
+DB_PASSWORD=
+DB_NAME=hello_green_db
+DB_PORT=3306
+
+# EXPRESS_PORT
+PORT=3003
+
+# Auth secret - random string
+SECRET='D$5QW7pUzsO&xzf#LEvm39XYovBtdF'
