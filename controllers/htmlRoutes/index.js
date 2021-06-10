@@ -40,42 +40,42 @@ router.get('/', (req, res) => {
             ],
         },
         ]
-
+    
     peopleCards = [
         {
             "imageUrl" : "https://placeimg.com/640/480/people",
-            "imgDescription" : "A person placeholder image",
+            "imgDescription" : "A placeholder image for people",
             "prefix" : "Professor",
             "firstName": "Spaniel",
             "lastName": "Boone",
-            "text": "Spaniel Boone is a frontierDog who wears a coonskin hat",
+            "text": "Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman",
             "posts" : [
-                {"title":"Brief1","date":"date1"},
-                {"title":"Brief2","date":"date2"},
+                {"title":"Yikadee","date":"01 January 2012"},
+                {"title":"Shenanigans","date":"31 February 0000"},
             ],
         },
         {
             "imageUrl" : "https://placeimg.com/640/480/people",
-            "imgDescription" : "A person placeholder image",
+            "imgDescription" : "A placeholder image for people",
             "prefix" : "Professor",
             "firstName": "Spaniel",
             "lastName": "Boone",
-            "text": "Spaniel Boone is a frontierDog who wears a coonskin hat",
+            "text": "Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman",
             "posts" : [
-                {"title":"Brief1","date":"date1"},
-                {"title":"Brief2","date":"date2"},
+                {"title":"Yikadee","date":"01 January 2012"},
+                {"title":"Shenanigans","date":"31 February 0000"},
             ],
         },
         {
             "imageUrl" : "https://placeimg.com/640/480/people",
-            "imgDescription" : "A person placeholder image",
+            "imgDescription" : "A placeholder image for people",
             "prefix" : "Professor",
             "firstName": "Spaniel",
             "lastName": "Boone",
-            "text": "Spaniel Boone is a frontierDog who wears a coonskin hat",
+            "text": "Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman",
             "posts" : [
-                {"title":"Brief1","date":"date1"},
-                {"title":"Brief2","date":"date2"},
+                {"title":"Yikadee","date":"01 January 2012"},
+                {"title":"Shenanigans","date":"31 February 0000"},
             ],
         },
     ]
@@ -88,10 +88,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    // If the user already has an account send them to the dashboard page
-    if (req.user) {
+    // Don't use this route - always access dashboard from the homepage
+    /* if (req.user) {
         res.redirect('/dashboard');
-    }
+    } */
     res.render('login', {
         user: req.session.user,
         loggedIn: req.session.loggedIn,
