@@ -1,8 +1,7 @@
 'use strict';
 const { Model, DataTypes } = require('sequelize');
 
-class Image extends Model {
-}
+class Image extends Model {}
 
 // Remember id, created_date, updated_date columns are created for you.
 Image.init(
@@ -29,7 +28,6 @@ Image.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
-
     },
     {
         sequelize,

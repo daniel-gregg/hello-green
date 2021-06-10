@@ -18,15 +18,20 @@ User.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        title: {
+        prefix: {
             type: DataTypes.STRING,
-            allowNull:true,
+            allowNull: true,
         },
         last_name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         first_name: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+
+        text: {
             type: DataTypes.STRING,
             allowNull: true,
         },
