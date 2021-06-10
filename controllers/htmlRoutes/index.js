@@ -121,14 +121,61 @@ router.get('/logout', (req, res) => {
     });
 }); */
 
-/* // Here we've add our isAuthenticated middleware to this route.
+// Here we've add our isAuthenticated middleware to this route.
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
-router.get('/dashboard', withAuth, (req, res) => {
-    console.log(req.session.user);
+router.get('/dashboard', (req, res) => {  //withAuth, add this in after the first argument when ready
+    projectBriefs = [
+        {
+        "imageUrl" : "https://picsum.photos/200",
+        "imgDescription" : "A placeholder Image",
+        "title": "Project Example 1",
+        "date": "03/07/1984",
+        "shortSummary": "This is wayyyyy to short for a summary!",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            ],
+        },
+        {
+        "imageUrl" : "https://picsum.photos/200",
+        "imgDescription" : "A placeholder Image",
+        "title": "Project Example 1",
+        "date": "03/07/1984",
+        "shortSummary": "This is wayyyyy to short for a summary!",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            ],
+        },
+        {
+        "imageUrl" : "https://picsum.photos/200",
+        "imgDescription" : "A placeholder Image",
+        "title": "Project Example 1",
+        "date": "03/07/1984",
+        "shortSummary": "This is wayyyyy to short for a summary!",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            ],
+        },
+        ]
+
     res.render('dashboard', {
+        briefs: projectBriefs,
         user: req.session.user,
         loggedIn: req.session.loggedIn,
     });
-}); */
+});
+
+// Route for the bioupdate - accessible from the dashboard page via the 'update bio' button
+// If a user who is not logged in tries to access this route they will be redirected to the signup page
+router.get('/bioupdate', (req, res) => {  //withAuth, add this in after the first argument when read
+
+    res.render('bioupdate', {
+    /*     briefs: projectBriefs,
+        user: req.session.user,
+        loggedIn: req.session.loggedIn, */
+    });
+});
 
 module.exports = router;
