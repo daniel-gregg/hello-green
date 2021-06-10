@@ -5,7 +5,8 @@
     "email": "Ernst.Blofeld@spectre.evil.org",
     "password": "failureisnottolerated",
     "imageUrl": "ErnstBlofeld.png",
-    "imageDescription": "Ernst Blofeld, Thunderball"
+    "imageDescription": "Ernst Blofeld, Thunderball",
+    "text":""
   },
   {
     "first_name": "Emilio", 
@@ -13,7 +14,8 @@
     "email": "Emilio.Largo@spectre.evil.org",
     "password": "failureisnottolerated",
     "imageUrl": "EmilioLargo.webp",
-    "imageDescription": "Emilio Largo"
+    "imageDescription": "Emilio Largo",
+    "text": " Largo is a large, handsome, athletic man, but his good looks are hard and smarmy. Attractive to women, Largo has satyr-like lips, oiled hair, and a hooked, Roman nose. He is a ruthless, successful criminal who womanizes and lives the high life among wealthy companions. This makes Largo's cover as a seeker of sunken treasure perfect. "
   },
   {
     "first_name": "Rosa", 
@@ -21,7 +23,8 @@
     "email": "Rosa.Klebb@spectre.evil.org",
     "password": "failureisnottolerated",
     "imageUrl": "RosaKlebb.jpg",
-    "imageDescription": "Rosa Klebb"
+    "imageDescription": "Rosa Klebb", 
+    "text": "Colonel Klebb is a high ranking member of the feared Russian counter-intelligence agency SMERSH, where she serves as the supervisor of Department II (operations and executions). She has a reputation for overseeing the interrogations of enemy agents in which, after exacting various methods of torture on the target, she speaks to them in a warm and motherly tone in an unusual and apparently effective method of extracting necessary information. "
   },
   {
     "first_name": "Irma", 
@@ -29,50 +32,38 @@
     "email": "Irma.Bunt@spectre.evil.org",
     "password": "failureisnottolerated",
     "imageUrl": "IrmaBunt.webp",
-    "imageDescription": "Irma Bunt"
+    "imageDescription": "Irma Bunt",
+    "text": "Irma Bunt is described as a short, strong, very sunburned female wardress; with a square, brutal face with hard yellow eyes, and brownish grey hair, tied in a tight, neat bun.[1] Bunt acts as Matron to Blofeld's Angels of Death, brainwashed women through whom the villain intends to spread biological warfare against Britain's agriculture."
   },
   {
     "first_name": "Tamil", 
     "last_name": "Rahani",
     "email": "Tamil.Rahani@spectre.evil.org",
     "password": "failureisnottolerated",
-    "imageUrl": "",
-    "imageDescription": ""
+    "text": "Rahani is the chairman and principle shareholder of Rahani Electronics."
   },
   {
     "first_name": "Nena", 
     "last_name": "Bismaquer",
     "email": "Nena.Bismaquer@spectre.evil.org",
-    "password": "failureisnottolerated"
-  },
-  {
-    "title": "Mr",
-    "last_name": "White",
-    "email": "Mr.White@spectre.evil.org",
-    "password": "failureisnottolerated"
-  },
-  {
-    "last_name": "Le Chiffre",
-    "email": "LeChiffre@spectre.evil.org",
-    "password": "failureisnottolerated"
+    "password": "failureisnottolerated",
+    "imageUrl": "Nene_Bismaquer.webp",
+    "text": "She was an orphan living in Paris with a passion for art. Her uncle helped her into getting an education, and once he fell sick when she turned twenty, she worked as a part-time waitress and continued her studies in art. After considering becoming a prostitute due to scarce jobs and the need for income, she met Bismaquer, whom purchased presents, clothes, and the best restaurants for her. Despite the drastic age differences, Nena agrees to marry him, and reveals to Bond that Bismaquer has a violent temper and is sexually ambivalent. "
+
   },
   {
     "first_name": "Dominic", 
     "last_name": "Greene",
     "email": "Dominic.Greene@spectre.evil.org",
-    "password": "failureisnottolerated"
+    "password": "failureisnottolerated",
+    "text": "Greene runs an organisation called Greene Planet, which is devoted to buying up large sums of land for ecological preservation. During the events of the film he is spearheading their Tierra Project in Bolivia. When he was 15, he had a crush on one of his mother’s piano students. He overheard this girl saying mean things about him. Angry, he presumably killed her with an iron. "
   },
   {
     "first_name": "Raoul", 
     "last_name": "Silva",
     "email": "Raoul.Silva@spectre.evil.org",
-    "password": "failureisnottolerated"
-  },
-  {
-    "title": "Mr.",
-    "last_name": "Hinx",
-    "email": "Mr.Hinx@spectre.evil.org",
-    "password": "failureisnottolerated"
+    "password": "failureisnottolerated",
+    "imageUrl": "Raoul_Silva.webp"
   },
   {
     "last_name": "Safin",
@@ -80,14 +71,19 @@
     "password": "failureisnottolerated"
   },
   {
-    "title": "Dr",
+    "prefix": "Dr",
     "last_name": "Claw",
     "email": "Dr.Claw@mad.evil.org",
-    "password": "i'llgetyounexttime,gadget!nexttime!"
-  },
+    "password": "illgetyougadget"
+  }, 
   {
-    "name": "Amiko",
-    "email": "amiko2k20@aol.com",
-    "password": "password12345"
+    "first_name": "Abe",
+    "last_name": "Fu Yung",
+    "email": "abe.fuyung@kaos.evil.org",
+    "password": "",
+    "text": "Born in New York's lower east side, as a child Fu was always getting into fights because of his first name. Bullies were always beating him up and then he was coming back again in a half hour for more. ", 
+    "imageUrl": "Abe-fu-yung.webp",
+    "imageDescription": "Abe Fu Yung"
   }
+
 ]

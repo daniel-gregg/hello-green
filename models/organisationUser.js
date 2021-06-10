@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class OrganisationUser extends Model { }
+class OrganisationUser extends Model {}
 
 OrganisationUser.init(
     {
@@ -17,7 +17,7 @@ OrganisationUser.init(
             type: DataTypes.STRING,
             allowNull: true,
         },
-        
+
         user_id: {
             type: DataTypes.INTEGER,
             references: {
@@ -33,9 +33,7 @@ OrganisationUser.init(
                 key: 'id',
             },
         },
-
     },
-
 
     {
         sequelize,

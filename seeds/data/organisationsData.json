@@ -8,5 +8,11 @@
         "name": "M.A.D.",
         "about": "Malevolent Agency of Destruction",
         "image": "Mad_logo.webp"
+    },
+    {
+        "name": "KAOS",
+        "about": "KAOS was founded in 1904 in Bucharest, but is a Delaware corporation for tax purposes",
+        "image": "Kaos-logo.webp"
     }
+
 ]
