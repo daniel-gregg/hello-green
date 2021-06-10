@@ -6,8 +6,8 @@
     "date": "",
     "shortSummary": "",
     "authors" : [
-        {"firstname": "Daniel", "lastName": "Gregg", "owner": true},
-        {"firstname": "Tim", "lastName": "McKeaveney", "owner": false},
+        {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+        {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
     ],
 }
  --}}
@@ -24,9 +24,9 @@
     <div class="font-bold text-xl mb-2">
         {{#each authors}}
             {{#if owner}}
-                <span class="inline-block bg-gray-300 rounded-md px-3 py-1 text-sm font-bold text-black mr-2 mb-2">{{this}}</span>
+                <span class="inline-block bg-gray-300 rounded-md px-3 py-1 text-sm font-bold text-black mr-2 mb-2">{{this.firstName}} {{this.lastName}}</span>
             {{else}}
-                <span class="inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-semi-bold text-gray-600 mr-2 mb-2">{{this}}</span>
+                <span class="inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-semi-bold text-gray-600 mr-2 mb-2">{{this.firstName}} {{this.lastName}}</span>
             {{/if}}
         {{/each}}
     </div>

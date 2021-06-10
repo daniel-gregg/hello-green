@@ -5,9 +5,85 @@ const withAuth = require('../../utils/withAuth');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+    projectBriefs = [
+        {
+        "imageUrl" : "https://picsum.photos/200",
+        "imgDescription" : "A placeholder Image",
+        "title": "Project Example 1",
+        "date": "03/07/1984",
+        "shortSummary": "This is wayyyyy to short for a summary!",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            ],
+        },
+        {
+        "imageUrl" : "https://picsum.photos/200",
+        "imgDescription" : "A placeholder Image",
+        "title": "Project Example 1",
+        "date": "03/07/1984",
+        "shortSummary": "This is wayyyyy to short for a summary!",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            ],
+        },
+        {
+        "imageUrl" : "https://picsum.photos/200",
+        "imgDescription" : "A placeholder Image",
+        "title": "Project Example 1",
+        "date": "03/07/1984",
+        "shortSummary": "This is wayyyyy to short for a summary!",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            ],
+        },
+        ]
+
+    peopleCards = [
+        {
+            "imageUrl" : "https://placeimg.com/640/480/people",
+            "imgDescription" : "A person placeholder image",
+            "prefix" : "Professor",
+            "firstName": "Spaniel",
+            "lastName": "Boone",
+            "text": "Spaniel Boone is a frontierDog who wears a coonskin hat",
+            "posts" : [
+                {"title":"Brief1","date":"date1"},
+                {"title":"Brief2","date":"date2"},
+            ],
+        },
+        {
+            "imageUrl" : "https://placeimg.com/640/480/people",
+            "imgDescription" : "A person placeholder image",
+            "prefix" : "Professor",
+            "firstName": "Spaniel",
+            "lastName": "Boone",
+            "text": "Spaniel Boone is a frontierDog who wears a coonskin hat",
+            "posts" : [
+                {"title":"Brief1","date":"date1"},
+                {"title":"Brief2","date":"date2"},
+            ],
+        },
+        {
+            "imageUrl" : "https://placeimg.com/640/480/people",
+            "imgDescription" : "A person placeholder image",
+            "prefix" : "Professor",
+            "firstName": "Spaniel",
+            "lastName": "Boone",
+            "text": "Spaniel Boone is a frontierDog who wears a coonskin hat",
+            "posts" : [
+                {"title":"Brief1","date":"date1"},
+                {"title":"Brief2","date":"date2"},
+            ],
+        },
+    ]
     res.render('index', {
         user: req.session.user,
         loggedIn: req.session.loggedIn,
+        briefs: projectBriefs,
+        people: peopleCards,
     });
 });
 
@@ -34,7 +110,7 @@ router.get('/logout', (req, res) => {
     }
 });
 
-router.get('/signup', (req, res) => {
+/* router.get('/signup', (req, res) => {
     // If the user already has an account send them to the dashboard page
     if (req.user) {
         res.redirect('/dashboard');
@@ -43,9 +119,9 @@ router.get('/signup', (req, res) => {
         user: req.session.user,
         loggedIn: req.session.loggedIn,
     });
-});
+}); */
 
-// Here we've add our isAuthenticated middleware to this route.
+/* // Here we've add our isAuthenticated middleware to this route.
 // If a user who is not logged in tries to access this route they will be redirected to the signup page
 router.get('/dashboard', withAuth, (req, res) => {
     console.log(req.session.user);
@@ -53,6 +129,6 @@ router.get('/dashboard', withAuth, (req, res) => {
         user: req.session.user,
         loggedIn: req.session.loggedIn,
     });
-});
+}); */
 
 module.exports = router;

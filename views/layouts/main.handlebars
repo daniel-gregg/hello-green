@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Passport Authentication</title>
+    <title>Hello Green</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -10,13 +10,23 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                {{#if loggedIn}}<li><a href="/dashboard">Dashboard</a></li>{{/if}}
-                {{#unless loggedIn}}<li><a href="/dashboard">Login</a> / <a href="/Dashboard">Signup</a></li>{{/unless}}
-                {{#if loggedIn}}<li><a href="/logout" id="logout">Logout</a></li>{{/if}}
-            </ul>
+        <nav class="flex items-center justify-between flex-wrap bg-teal p-6">
+            <div class="flex items-center flex-no-shrink text-white mr-6">
+                <span class="font-semibold text-xl tracking-tight">Hello Green project reporting templates</span>
+            </div>
+            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+                <div class="text-sm lg:flex-grow">
+                {{#if loggedIn}}<a href="/dashboard" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
+                    Dashboard
+                </a>{{/if}}
+                {{#unless loggedIn}}<a href="/dashboard" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
+                    Login
+                </a>{{/unless}}
+                {{#if loggedIn}}<a href="/logout" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white">
+                    Logout
+                </a>{{/if}}
+                </div>
+            </div>
         </nav>
     </header>
     {{{body}}}
