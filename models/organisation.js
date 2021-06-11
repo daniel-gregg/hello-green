@@ -21,7 +21,7 @@ Organisation.init(
         },
 
         about: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: true,
         },
 
