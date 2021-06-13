@@ -1,0 +1,47 @@
+[
+    {
+        "role": "No. 1",
+        "user_id": 1,
+        "org_id": 1
+    },
+    {
+        "role": "Henchman",
+        "user_id": 2,
+        "org_id": 1
+    },
+    {
+        "role": "Henchman",
+        "user_id": 3,
+        "org_id": 1
+    },
+    {
+        "role": "Henchman",
+        "user_id": 4,
+        "org_id": 1
+    },
+    {
+        "role": "Henchman",
+        "user_id": 5,
+        "org_id": 1
+    },
+    {
+        "role": "Henchman",
+        "user_id": 6,
+        "org_id": 1
+    },
+    {
+        "role": "Henchman",
+        "user_id": 7,
+        "org_id": 1
+    },
+    {
+        "role": "Head of MAD",
+        "user_id": 8,
+        "org_id": 2
+    },
+    {
+        "role": "Henchman",
+        "user_id": 9,
+        "org_id": 3
+    }
+]

@@ -23,7 +23,7 @@ module.exports = {
     Organisation,
     Brief,
     Keyword,
-    // OrganisationUser,
+    OrganisationUser,
     // // BriefKeyword,
     // Collaborator,
 };
