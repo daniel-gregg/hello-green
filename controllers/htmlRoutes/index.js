@@ -4,28 +4,6 @@ const express = require('express');
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
 
-const { User, Organisation, Brief, Keyword, OrganisationUser } = require('../../models');
-
-router.get('/debug', async (req, res) => {
-    try {
-        const briefData = await Brief.findAll(
-            
-        );
-
-        // Serialize data so the template can read it
-        const projectBriefs = briefData.map((brief) => brief.get({ plain: true }));
-
-
-        res.render('debug', {
-            user: req.session.user,
-            loggedIn: req.session.loggedIn,
-            briefs: projectBriefs,
-        });
-    } catch (err) {
-        console.log(err);
-    }
-});
-
 router.get('/', (req, res) => {
     projectBriefs = [
         {

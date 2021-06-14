@@ -1,0 +1,47 @@
+[
+    {
+        "path": "Abe-fu-yung.webp",
+        "description": "Abe Fu-Yung"
+    },
+    {
+        "path": "default.png",
+        "about": "Default image to be used when no other image can be found.",
+        "description": ""
+    },
+    {
+        "path": "EmilioLargo.webp",
+        "description": "Emilio Largo"
+    },
+    {
+        "path": "ErnstBlofeld.png",
+        "description": "Ernst Blofeld"
+    },
+    {
+        "path": "IrmaBunt.webp",
+        "description": "IrmaBunt"
+    },
+    {
+        "path": "Kaos-logo.webp",
+        "description": "KAOS"
+    },
+    {
+        "path": "Mad_logo.webp",
+        "description": "Mad"
+    },
+    {
+        "path": "Nene_Bismaqu.webp",
+        "description": "Nene Bismaqu"
+    },
+    {
+        "path": "Raoul_Silva.webp",
+        "description": "Raoul Silva"
+    },
+    {
+        "path": "RosaKlebb.jpg",
+        "description": "Rosa Klebb"
+    },
+    {
+        "path": "SPECTRE.webp",
+        "description": "SPECTRE"
+    }
+]

@@ -24,12 +24,6 @@ Organisation.init(
             type: DataTypes.TEXT,
             allowNull: true,
         },
-
-        image: {
-            // path to image/
-            type: DataTypes.STRING,
-            allowNull: true,
-        },
     },
     {
         sequelize,
