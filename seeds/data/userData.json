@@ -4,26 +4,23 @@
     "last_name": "Blofeld",
     "email": "Ernst.Blofeld@spectre.evil.org",
     "password": "failureisnottolerated",
-    "imageUrl": "ErnstBlofeld.png",
-    "imageDescription": "Ernst Blofeld, Thunderball",
-    "text":""
+    "image_id": 4
   },
   {
     "first_name": "Emilio", 
     "last_name": "Largo",
     "email": "Emilio.Largo@spectre.evil.org",
     "password": "failureisnottolerated",
-    "imageUrl": "EmilioLargo.webp",
-    "imageDescription": "Emilio Largo",
+    "image_id": 3,  
     "text": " Largo is a large, handsome, athletic man, but his good looks are hard and smarmy. Attractive to women, Largo has satyr-like lips, oiled hair, and a hooked, Roman nose. He is a ruthless, successful criminal who womanizes and lives the high life among wealthy companions. This makes Largo's cover as a seeker of sunken treasure perfect. "
   },
   {
+    "prefix": "Colonel",
     "first_name": "Rosa", 
     "last_name": "Klebb",
     "email": "Rosa.Klebb@spectre.evil.org",
     "password": "failureisnottolerated",
-    "imageUrl": "RosaKlebb.jpg",
-    "imageDescription": "Rosa Klebb", 
+    "image_id": 10, 
     "text": "Colonel Klebb is a high ranking member of the feared Russian counter-intelligence agency SMERSH, where she serves as the supervisor of Department II (operations and executions). She has a reputation for overseeing the interrogations of enemy agents in which, after exacting various methods of torture on the target, she speaks to them in a warm and motherly tone in an unusual and apparently effective method of extracting necessary information. "
   },
   {
@@ -31,8 +28,7 @@
     "last_name": "Bunt",
     "email": "Irma.Bunt@spectre.evil.org",
     "password": "failureisnottolerated",
-    "imageUrl": "IrmaBunt.webp",
-    "imageDescription": "Irma Bunt",
+    "image_id": 5,  
     "text": "Irma Bunt is described as a short, strong, very sunburned female wardress; with a square, brutal face with hard yellow eyes, and brownish grey hair, tied in a tight, neat bun.[1] Bunt acts as Matron to Blofeld's Angels of Death, brainwashed women through whom the villain intends to spread biological warfare against Britain's agriculture."
   },
   {
@@ -40,9 +36,9 @@
     "last_name": "Bismaquer",
     "email": "Nena.Bismaquer@spectre.evil.org",
     "password": "failureisnottolerated",
-    "imageUrl": "Nene_Bismaquer.webp",
+    "image_id": 8,  
     "text": "She was an orphan living in Paris with a passion for art. Her uncle helped her into getting an education, and once he fell sick when she turned twenty, she worked as a part-time waitress and continued her studies in art. After considering becoming a prostitute due to scarce jobs and the need for income, she met Bismaquer, whom purchased presents, clothes, and the best restaurants for her. Despite the drastic age differences, Nena agrees to marry him, and reveals to Bond that Bismaquer has a violent temper and is sexually ambivalent. "
-
+    
   },
   {
     "first_name": "Dominic", 
@@ -56,7 +52,7 @@
     "last_name": "Silva",
     "email": "Raoul.Silva@spectre.evil.org",
     "password": "failureisnottolerated",
-    "imageUrl": "Raoul_Silva.webp"
+    "image_id": 9
   },
   {
     "prefix": "Dr",
@@ -70,8 +66,7 @@
     "email": "abe.fuyung@kaos.evil.org",
     "password": "",
     "text": "Born in New York's lower east side, as a child Fu was always getting into fights because of his first name. Bullies were always beating him up and then he was coming back again in a half hour for more. ", 
-    "imageUrl": "Abe-fu-yung.webp",
-    "imageDescription": "Abe Fu Yung"
+    "image_id": 1 
   }
 
 ]

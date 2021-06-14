@@ -1,0 +1,27 @@
+  {{!--  ***Data format for users ***************************
+   {
+    id: 4,
+    prefix: 'Colonel',
+    last_name: 'Klebb',
+    first_name: 'Rosa',
+    text: 'Colonel Klebb is a high ranking member of the feared Russian counter-intelligence agency SMERSH, where she serves as the supervisor of Department II (operations and executions). She has a reputation for overseeing the interrogations of enemy agents in which, after exacting various methods of torture on the target, she speaks to them in a warm and motherly tone in an unusual and apparently effective method of extracting necessary information. ',
+    email: 'Rosa.Klebb@spectre.evil.org',
+    createdAt: 2021-06-14T10:58:04.000Z,
+    updatedAt: 2021-06-14T10:58:04.000Z,
+    image_id: 10,
+    image: { path: 'RosaKlebb.jpg', description: 'Rosa Klebb' }
+  },
+ --}}
+
+
+
+<div class="rounded overflow-hidden shadow-lg">
+    <img class="w-full" src={{ format_image_url image.path}} alt={{ image.description }}>
+    <div class="px-6 py-4">
+    
+    <div class="font-bold text-xl mb-2">{{prefix}} {{first_name}} {{last_name}}</div>
+    <p class="text-gray-700 text-base">
+        {{text}}
+    </p>
+    </div>
+</div>

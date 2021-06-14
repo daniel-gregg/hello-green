@@ -29,7 +29,7 @@
         "description": "Mad"
     },
     {
-        "path": "Nene_Bismaqu.webp",
+        "path": "Nene_Bismaquer.webp",
         "description": "Nene Bismaqu"
     },
     {
@@ -43,5 +43,25 @@
     {
         "path": "SPECTRE.webp",
         "description": "SPECTRE"
+    },
+    {
+        "path": "coocoocaper.png",
+        "description": "coo coo caper"
+    },
+    {
+        "path": "moonraker.png",
+        "description": "moonraker"
+    },
+    {
+        "path": "onenationinvisible.png",
+        "description": "one nation invisible"
+    },
+    {
+        "path": "thunderball.png",
+        "description": "thunderball"
+    },
+    {
+        "path": "twotails.png",
+        "description": "A tale of two tails"
     }
 ]
