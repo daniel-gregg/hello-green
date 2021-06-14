@@ -11,7 +11,7 @@ Brief.belongsToMany(User, { through: 'collaborators', foreignKey: 'brief_id' });
 User.belongsToMany(Brief, { through: 'collaborators', foreignKey: 'user_id' });
 
 Brief.belongsToMany(Keyword, { through: 'brief_keyword', foreignKey: 'brief_id' });
-User.belongsToMany(Brief, { through: 'brief_keyword', foreignKey: 'user_id' });
+Keyword.belongsToMany(Brief, { through: 'brief_keyword', foreignKey: 'kw_id' });
 
 User.belongsToMany(Organisation, { through: OrganisationUser, foreignKey: 'user_id' });
 Organisation.belongsToMany(User, { through: OrganisationUser, foreignKey: 'org_id' });
