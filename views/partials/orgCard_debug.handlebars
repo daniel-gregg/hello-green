@@ -14,12 +14,12 @@
  --}}
 
 <div class="rounded overflow-hidden shadow-lg">
-    <img class="w-full" src={{ format_image_url imageUrl}} alt={{imgDescription}}>
+    <img class="w-full" src={{ format_image_url image.path}} alt={{ image.description }}>
     <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">{{title}}</div>
-    <p class="text-gray-600">{{format_date date_last_edited}}</p>
+    <div class="font-bold text-xl mb-2">{{ name }}</div>
+    <p class="text-gray-600">{{format_date updatedAt}}</p>
     <p class="text-gray-700 text-base">
-        {{shortSummary}}
+        {{about}}
     </p>
     </div>
 </div>
