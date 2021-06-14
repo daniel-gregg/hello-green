@@ -9,7 +9,9 @@ module.exports = {
     },
 
     format_image_url: (imageURL) => {
-        if (typeof imageURL === 'undefined') {
+        if (imageURL === null) {
+            return '/images/default.png';
+        } else if (typeof imageURL === 'undefined') {
             return '/images/default.png';
         } else if (imageURL.slice(0, 4) === 'http') {
             // coded to an external website 
