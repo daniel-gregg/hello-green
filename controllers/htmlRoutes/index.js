@@ -6,10 +6,11 @@ const router = express.Router();
 
 const { User, Organisation, Brief, Keyword, OrganisationUser } = require('../../models');
 
-router.get('/debug', async (req, res) =>  {
-
+router.get('/debug', async (req, res) => {
     try {
-        const briefData = await Brief.findAll();
+        const briefData = await Brief.findAll(
+            
+        );
 
         // Serialize data so the template can read it
         const projectBriefs = briefData.map((brief) => brief.get({ plain: true }));
@@ -20,16 +21,10 @@ router.get('/debug', async (req, res) =>  {
             loggedIn: req.session.loggedIn,
             briefs: projectBriefs,
         });
-    }
-
-    catch (err) {
-        console.log(err)
-
+    } catch (err) {
+        console.log(err);
     }
 });
-
-
-
 
 router.get('/', (req, res) => {
     projectBriefs = [
