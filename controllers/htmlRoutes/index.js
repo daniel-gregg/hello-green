@@ -4,81 +4,108 @@ const express = require('express');
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
 
+const { User, Organisation, Brief, Keyword, OrganisationUser } = require('../../models');
+
+router.get('/debug', async (req, res) =>  {
+
+    try {
+        const briefData = await Brief.findAll();
+
+        // Serialize data so the template can read it
+        const projectBriefs = briefData.map((brief) => brief.get({ plain: true }));
+
+
+        res.render('debug', {
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+            briefs: projectBriefs,
+        });
+    }
+
+    catch (err) {
+        console.log(err)
+
+    }
+});
+
+
+
+
 router.get('/', (req, res) => {
     projectBriefs = [
         {
-        "imageUrl" : "https://picsum.photos/200",
-        "imgDescription" : "A placeholder Image",
-        "title": "Project Example 1",
-        "date": "03/07/1984",
-        "shortSummary": "This is wayyyyy to short for a summary!",
-        "authors" : [
-            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
-            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            imageUrl: 'https://picsum.photos/200',
+            imgDescription: 'A placeholder Image',
+            title: 'Project Example 1',
+            date: '03/07/1984',
+            shortSummary: 'This is wayyyyy to short for a summary!',
+            authors: [
+                { firstName: 'Daniel', lastName: 'Gregg', owner: true },
+                { firstName: 'Tim', lastName: 'McKeaveney', owner: false },
             ],
         },
         {
-        "imageUrl" : "https://picsum.photos/200",
-        "imgDescription" : "A placeholder Image",
-        "title": "Project Example 1",
-        "date": "03/07/1984",
-        "shortSummary": "This is wayyyyy to short for a summary!",
-        "authors" : [
-            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
-            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            imageUrl: 'https://picsum.photos/200',
+            imgDescription: 'A placeholder Image',
+            title: 'Project Example 1',
+            date: '03/07/1984',
+            shortSummary: 'This is wayyyyy to short for a summary!',
+            authors: [
+                { firstName: 'Daniel', lastName: 'Gregg', owner: true },
+                { firstName: 'Tim', lastName: 'McKeaveney', owner: false },
             ],
         },
         {
-        "imageUrl" : "https://picsum.photos/200",
-        "imgDescription" : "A placeholder Image",
-        "title": "Project Example 1",
-        "date": "03/07/1984",
-        "shortSummary": "This is wayyyyy to short for a summary!",
-        "authors" : [
-            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
-            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            imageUrl: 'https://picsum.photos/200',
+            imgDescription: 'A placeholder Image',
+            title: 'Project Example 1',
+            date: '03/07/1984',
+            shortSummary: 'This is wayyyyy to short for a summary!',
+            authors: [
+                { firstName: 'Daniel', lastName: 'Gregg', owner: true },
+                { firstName: 'Tim', lastName: 'McKeaveney', owner: false },
             ],
         },
-        ]
-    
+    ];
+
     peopleCards = [
         {
-            "imageUrl" : "https://placeimg.com/640/480/people",
-            "imgDescription" : "A placeholder image for people",
-            "prefix" : "Professor",
-            "firstName": "Spaniel",
-            "lastName": "Boone",
-            "text": "Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman",
-            "posts" : [
-                {"title":"Yikadee","date":"01 January 2012"},
-                {"title":"Shenanigans","date":"31 February 0000"},
+            imageUrl: 'https://placeimg.com/640/480/people',
+            imgDescription: 'A placeholder image for people',
+            prefix: 'Professor',
+            firstName: 'Spaniel',
+            lastName: 'Boone',
+            text: 'Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman',
+            posts: [
+                { title: 'Yikadee', date: '01 January 2012' },
+                { title: 'Shenanigans', date: '31 February 0000' },
             ],
         },
         {
-            "imageUrl" : "https://placeimg.com/640/480/people",
-            "imgDescription" : "A placeholder image for people",
-            "prefix" : "Professor",
-            "firstName": "Spaniel",
-            "lastName": "Boone",
-            "text": "Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman",
-            "posts" : [
-                {"title":"Yikadee","date":"01 January 2012"},
-                {"title":"Shenanigans","date":"31 February 0000"},
+            imageUrl: 'https://placeimg.com/640/480/people',
+            imgDescription: 'A placeholder image for people',
+            prefix: 'Professor',
+            firstName: 'Spaniel',
+            lastName: 'Boone',
+            text: 'Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman',
+            posts: [
+                { title: 'Yikadee', date: '01 January 2012' },
+                { title: 'Shenanigans', date: '31 February 0000' },
             ],
         },
         {
-            "imageUrl" : "https://placeimg.com/640/480/people",
-            "imgDescription" : "A placeholder image for people",
-            "prefix" : "Professor",
-            "firstName": "Spaniel",
-            "lastName": "Boone",
-            "text": "Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman",
-            "posts" : [
-                {"title":"Yikadee","date":"01 January 2012"},
-                {"title":"Shenanigans","date":"31 February 0000"},
+            imageUrl: 'https://placeimg.com/640/480/people',
+            imgDescription: 'A placeholder image for people',
+            prefix: 'Professor',
+            firstName: 'Spaniel',
+            lastName: 'Boone',
+            text: 'Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman',
+            posts: [
+                { title: 'Yikadee', date: '01 January 2012' },
+                { title: 'Shenanigans', date: '31 February 0000' },
             ],
         },
-    ]
+    ];
     res.render('index', {
         user: req.session.user,
         loggedIn: req.session.loggedIn,

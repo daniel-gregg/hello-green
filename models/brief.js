@@ -1,8 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Brief extends Model { }
-
+class Brief extends Model {}
 
 Brief.init(
     {
@@ -34,7 +33,7 @@ Brief.init(
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
-        }
+        },
     },
     {
         sequelize,

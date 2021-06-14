@@ -1,0 +1,11 @@
+[
+    {"user_id": 2, "brief_id": 1},
+    {"user_id": 3, "brief_id": 1},
+    {"user_id": 4, "brief_id": 1},
+    {"user_id": 5, "brief_id": 2},
+    {"user_id": 6, "brief_id": 2},
+    {"user_id": 7, "brief_id": 2},
+    {"user_id": 2, "brief_id": 3},
+    {"user_id": 4, "brief_id": 3},
+    {"user_id": 6, "brief_id": 3}
+]
