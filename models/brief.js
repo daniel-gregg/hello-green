@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Brief extends Model {}
+class Brief extends Model { }
 
 Brief.init(
     {
@@ -12,10 +12,16 @@ Brief.init(
             autoIncrement: true,
         },
 
-        //shortSummary <75 words
+        title: {
+            type: DataTypes.STRING,
+        },
+
+        shortSummary: {
+            type: DataTypes.TEXT, // < 75 words
+        },
 
         summary: {
-            type: DataTypes.STRING, // < 200 words
+            type: DataTypes.TEXT, // < 200 words
         },
 
         content: {
