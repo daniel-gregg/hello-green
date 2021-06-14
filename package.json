@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "seed": "node ./seeds/seed.js",
     "lint": "eslint --fix .",
     "test": "eslint --quiet .",
     "start": "node server.js",

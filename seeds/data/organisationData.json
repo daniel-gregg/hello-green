@@ -2,17 +2,17 @@
     {
         "name": "SPECTRE",
         "about": "Special Executive for Counter-intelligence, Terrorism, Revenge, and Extortion",
-        "image": "SPECTRE_logos_(3).webp"
+        "image_id": 11
     },
     {
         "name": "M.A.D.",
         "about": "Malevolent Agency of Destruction",
-        "image": "Mad_logo.webp"
+        "image_id": 7
     },
     {
         "name": "KAOS",
-        "about": "KAOS was founded in 1904 in Bucharest, but is a Delaware corporation for tax purposes",
-        "image": "Kaos-logo.webp"
+        "about": "KAOS was founded in 1904 in Bucharest, but is a Delaware corporation for tax purposes", 
+        "image_id": 6
     }
 
 ]
