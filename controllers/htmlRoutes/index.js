@@ -152,9 +152,25 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
 
 })
 
+// User can add a new project brief
+router.get('/brief/new', async (req, res) => {  //withAuth, add this in after the first argument when ready
+    try {
+        res.render('briefForm', {
+            
+            //image: image.path,
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch(err) {
+        console.log(err)
+    }
+
+})
+
 router.get('/dashboard', (req, res) => {  //withAuth, add this in after the first argument when ready
     projectBriefs = [
         {
+        "id": 1,
         "imageUrl" : "https://picsum.photos/200",
         "imgDescription" : "A placeholder Image",
         "title": "Project Example 1",
@@ -166,6 +182,7 @@ router.get('/dashboard', (req, res) => {  //withAuth, add this in after the firs
             ],
         },
         {
+        "id": 2,
         "imageUrl" : "https://picsum.photos/200",
         "imgDescription" : "A placeholder Image",
         "title": "Project Example 1",
@@ -177,6 +194,7 @@ router.get('/dashboard', (req, res) => {  //withAuth, add this in after the firs
             ],
         },
         {
+        "id": 3,
         "imageUrl" : "https://picsum.photos/200",
         "imgDescription" : "A placeholder Image",
         "title": "Project Example 1",
@@ -189,6 +207,7 @@ router.get('/dashboard', (req, res) => {  //withAuth, add this in after the firs
         },
         ]
 
+        console.log(projectBriefs[1].id)
     res.render('dashboard', {
         briefs: projectBriefs,
         user: req.session.user,
@@ -196,4 +215,24 @@ router.get('/dashboard', (req, res) => {  //withAuth, add this in after the firs
     });
 });
 
+router.get('/bioupdate', async (req, res) => {
+    try {
+
+        //Get user
+        //TO DO
+
+        //then get user data
+        const userData = await Brief.findByPk(req.params.briefId).get({plain: true});
+        
+        //then send to render for bioupdate
+        res.render('biopudate', {
+            userData: userData,
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch(err) {
+        console.log(err)
+    }
+})
+        
 module.exports = router;
