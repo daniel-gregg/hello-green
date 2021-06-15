@@ -1,14 +1,41 @@
-<div class="container">
-    <div class="flex justify-center">
-        <div class="w-full md:w-1/2">
-            <h2>Your Accout: <span class="member-name">{{user.name}}</span></h2>
-            <p>Your details:</p>
-            <ul>
-                <li>ID: {{user.id}}</li>
-                <li>Name: {{user.name}}</li>
-                <li>Email: {{user.email}}</li>
-                <li>Account Creation: {{user.createdAt}}</li>
-            </ul>
+<div class="flex justify-center">
+  <div class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:text-center">
+            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Hello {{user.first_name}} {{user.last_name}}
+            </p>
         </div>
     </div>
+  </div>
 </div>
+
+<div class="flex justify-center">
+    <a href="/bioupdate"><button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        <span>Update your bio</span>
+    </button></a>
+</div>
+
+    <div class="flex justify-center items-end h-24">
+        <div class="lg:text-center">
+            <p class="mt-4 max-w-4xl text-xl text-gray-500 lg:mx-auto">
+                Your published briefs are listed here. 
+            </p>
+        </div> 
+    </div>  
+    <div class="flex justify-center">
+        <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+            {{#each briefs as |brief|}}
+                {{> briefsCard}}
+            {{/each}}
+        </div>
+    </div>
+    <div class="flex justify-center h-24">
+        <div class="lg:text-center">
+            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+                <span>Add a new post</span>
+            </button>
+        </div>
+    </div>
+    
+

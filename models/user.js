@@ -7,6 +7,9 @@ class User extends Model {
     validPassword(password) {
         return bcrypt.compareSync(password, this.password);
     }
+    fullName() {
+        return `${this.first_name} ${this.last_name}`
+    }
 }
 
 // Remember id, created_date, updated_date columns are created for you.
