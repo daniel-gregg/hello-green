@@ -3,8 +3,7 @@ const express = require('express');
 // Requiring our custom middleware for checking if a user is logged in
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
-const {Brief} = require('../../models')
-const {Image} = require('../../models')
+const {User, Organisation, Brief, Keyword, OrganisationUser, Image} = require('../../models')
 
 // **********************************************************************************
 // Debug
