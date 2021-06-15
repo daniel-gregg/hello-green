@@ -5,8 +5,6 @@ const withAuth = require('../../utils/withAuth');
 const router = express.Router();
 const {User, Organisation, Brief, Keyword, OrganisationUser, Image} = require('../../models')
 
-// **********************************************************************************
-// Debug
 router.get('/', async (req, res) => {
     try {
 
@@ -153,5 +151,49 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
     }
 
 })
+
+router.get('/dashboard', (req, res) => {  //withAuth, add this in after the first argument when ready
+    projectBriefs = [
+        {
+        "imageUrl" : "https://picsum.photos/200",
+        "imgDescription" : "A placeholder Image",
+        "title": "Project Example 1",
+        "date": "03/07/1984",
+        "shortSummary": "This is wayyyyy to short for a summary!",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            ],
+        },
+        {
+        "imageUrl" : "https://picsum.photos/200",
+        "imgDescription" : "A placeholder Image",
+        "title": "Project Example 1",
+        "date": "03/07/1984",
+        "shortSummary": "This is wayyyyy to short for a summary!",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            ],
+        },
+        {
+        "imageUrl" : "https://picsum.photos/200",
+        "imgDescription" : "A placeholder Image",
+        "title": "Project Example 1",
+        "date": "03/07/1984",
+        "shortSummary": "This is wayyyyy to short for a summary!",
+        "authors" : [
+            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
+            ],
+        },
+        ]
+
+    res.render('dashboard', {
+        briefs: projectBriefs,
+        user: req.session.user,
+        loggedIn: req.session.loggedIn,
+    });
+});
 
 module.exports = router;
