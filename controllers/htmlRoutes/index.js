@@ -10,11 +10,41 @@ const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require(
 // Debug
 router.get('/', async (req, res) => {
     try {
-        // console.log(req)
-        //         res.render('debug', {
-        //             user: req.session.user,
-        //             loggedIn: req.session.loggedIn,
-        //         });
+
+        const briefData = await Brief.findAll({
+            limit: 4,
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+            ],
+        });
+        // Serialize data so the template can read it
+        const briefs = briefData.map((brf) => brf.get({ plain: true }));
+
+        const userData = await User.findAll({
+            limit: 4,
+            attributes: { exclude: ['password'] },
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+            ],
+        });
+        // Serialize data so the template can read it
+        const users = userData.map((u) => u.get({ plain: true }));
+
+        res.render('index', {
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+            briefs: briefs,
+            users: users,
+        });
+
+
+
     } catch (err) {
         console.log(err);
     }
@@ -34,8 +64,6 @@ router.get('/users', async (req, res) => {
         });
         // Serialize data so the template can read it
         const users = userData.map((u) => u.get({ plain: true }));
-        console.clear();
-        console.log(users);
 
         res.render('users', {
             user: req.session.user,
@@ -46,7 +74,6 @@ router.get('/users', async (req, res) => {
         console.log(err);
     }
 });
-
 
 
 
