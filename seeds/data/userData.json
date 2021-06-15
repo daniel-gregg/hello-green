@@ -2,8 +2,8 @@
   {
     "first_name": "Ernst", 
     "last_name": "Blofeld",
-    "email": "Ernst.Blofeld@spectre.evil.org",
-    "password": "failureisnottolerated",
+    "email": "jack@email.com",
+    "password": "password",
     "image_id": 4
   },
   {
@@ -57,14 +57,14 @@
   {
     "prefix": "Dr",
     "last_name": "Claw",
-    "email": "Dr.Claw@mad.evil.org",
-    "password": "illgetyougadget"
+    "email": "tim@email.com",
+    "password": "password"
   }, 
   {
     "first_name": "Abe",
     "last_name": "Fu Yung",
-    "email": "abe.fuyung@kaos.evil.org",
-    "password": "",
+    "email": "daniel@email.com",
+    "password": "password",
     "text": "Born in New York's lower east side, as a child Fu was always getting into fights because of his first name. Bullies were always beating him up and then he was coming back again in a half hour for more. ", 
     "image_id": 1 
   }
