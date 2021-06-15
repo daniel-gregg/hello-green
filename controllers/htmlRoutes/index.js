@@ -107,7 +107,4 @@ router.get('/organisations', async (req, res) => {
     }
 });
 
-
-
-
 module.exports = router;
