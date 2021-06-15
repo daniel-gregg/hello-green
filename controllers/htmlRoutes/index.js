@@ -3,8 +3,8 @@ const express = require('express');
 // Requiring our custom middleware for checking if a user is logged in
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
-
-const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require('../../models');
+const {Brief} = require('../../models')
+const {Image} = require('../../models')
 
 // **********************************************************************************
 // Debug
@@ -106,5 +106,26 @@ router.get('/organisations', async (req, res) => {
         console.log(err);
     }
 });
+
+// Here we've add our isAuthenticated middleware to this route.
+// User can update their owned project briefs
+router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this in after the first argument when ready
+    try {
+        const briefData = await Brief.findByPk(req.params.briefId);
+        const brief = await briefData.get({ plain: true })
+        
+        console.log(brief)
+    
+        res.render('briefForm', {
+            brief,
+            //image: image.path,
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch(err) {
+        console.log(err)
+    }
+
+})
 
 module.exports = router;
