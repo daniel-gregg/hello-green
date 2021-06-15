@@ -40,8 +40,6 @@ router.get('/', async (req, res) => {
             users: users,
         });
 
-
-
     } catch (err) {
         console.log(err);
     }
@@ -195,5 +193,37 @@ router.get('/dashboard', (req, res) => {  //withAuth, add this in after the firs
         loggedIn: req.session.loggedIn,
     });
 });
+
+
+
+
+
+//withAuth, add this in after the first argument when ready
+router.get('/login' , async (req, res) => {
+    res.render('login');
+
+
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports = router;
