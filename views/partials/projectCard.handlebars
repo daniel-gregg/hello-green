@@ -5,20 +5,17 @@
     "title": "",
     "date": "",
     "shortSummary": "",
-    "authors" : [
-        {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
-        {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
-    ],
-}
- --}}
+    "owner {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
 
-<div class="rounded overflow-hidden shadow-lg" href="/brief/{{id}}/edit">
-    {{!-- this is the good stuff for getting routes and things --}}
-    {{!-- <a href="/brief/{{brief.id}}/edit"></a> --}}
-    <img class="w-full" src={{imageUrl}} alt={{imgDescription}}>
+    collaborators: [
+        { firstName: 'Tim', lastName: 'McKeaveney'},
+        { firstName: 'Rosa, lastName: 'Klebb'},
+        ],
+ --}}
+ 
     <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">{{title}}</div>
-    <p class="text-gray-600">{{date}}</p>
+    <p class="text-gray-600">{{format_date date_last_edited}}</p>
     <p class="text-gray-700 text-base">
         {{shortSummary}}
     </p>
