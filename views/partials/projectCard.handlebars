@@ -12,7 +12,9 @@
 }
  --}}
 
-<div class="rounded overflow-hidden shadow-lg">
+<div class="rounded overflow-hidden shadow-lg" href="/brief/{{id}}/edit">
+    {{!-- this is the good stuff for getting routes and things --}}
+    {{!-- <a href="/brief/{{brief.id}}/edit"></a> --}}
     <img class="w-full" src={{imageUrl}} alt={{imgDescription}}>
     <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">{{title}}</div>
