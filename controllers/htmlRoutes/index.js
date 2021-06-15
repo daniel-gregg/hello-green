@@ -4,131 +4,110 @@ const express = require('express');
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    projectBriefs = [
-        {
-            imageUrl: 'https://picsum.photos/200',
-            imgDescription: 'A placeholder Image',
-            title: 'Project Example 1',
-            date: '03/07/1984',
-            shortSummary: 'This is wayyyyy to short for a summary!',
-            authors: [
-                { firstName: 'Daniel', lastName: 'Gregg', owner: true },
-                { firstName: 'Tim', lastName: 'McKeaveney', owner: false },
-            ],
-        },
-        {
-            imageUrl: 'https://picsum.photos/200',
-            imgDescription: 'A placeholder Image',
-            title: 'Project Example 1',
-            date: '03/07/1984',
-            shortSummary: 'This is wayyyyy to short for a summary!',
-            authors: [
-                { firstName: 'Daniel', lastName: 'Gregg', owner: true },
-                { firstName: 'Tim', lastName: 'McKeaveney', owner: false },
-            ],
-        },
-        {
-            imageUrl: 'https://picsum.photos/200',
-            imgDescription: 'A placeholder Image',
-            title: 'Project Example 1',
-            date: '03/07/1984',
-            shortSummary: 'This is wayyyyy to short for a summary!',
-            authors: [
-                { firstName: 'Daniel', lastName: 'Gregg', owner: true },
-                { firstName: 'Tim', lastName: 'McKeaveney', owner: false },
-            ],
-        },
-    ];
+const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require('../../models');
 
-    peopleCards = [
-        {
-            imageUrl: 'https://placeimg.com/640/480/people',
-            imgDescription: 'A placeholder image for people',
-            prefix: 'Professor',
-            firstName: 'Spaniel',
-            lastName: 'Boone',
-            text: 'Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman',
-            posts: [
-                { title: 'Yikadee', date: '01 January 2012' },
-                { title: 'Shenanigans', date: '31 February 0000' },
-            ],
-        },
-        {
-            imageUrl: 'https://placeimg.com/640/480/people',
-            imgDescription: 'A placeholder image for people',
-            prefix: 'Professor',
-            firstName: 'Spaniel',
-            lastName: 'Boone',
-            text: 'Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman',
-            posts: [
-                { title: 'Yikadee', date: '01 January 2012' },
-                { title: 'Shenanigans', date: '31 February 0000' },
-            ],
-        },
-        {
-            imageUrl: 'https://placeimg.com/640/480/people',
-            imgDescription: 'A placeholder image for people',
-            prefix: 'Professor',
-            firstName: 'Spaniel',
-            lastName: 'Boone',
-            text: 'Spaniel Boone is a hodgepodge mixup of a Spaniel and a coonskin-wearing frontiersman',
-            posts: [
-                { title: 'Yikadee', date: '01 January 2012' },
-                { title: 'Shenanigans', date: '31 February 0000' },
-            ],
-        },
-    ];
-    res.render('index', {
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-        briefs: projectBriefs,
-        people: peopleCards,
-    });
+// **********************************************************************************
+// Debug
+router.get('/', async (req, res) => {
+    try {
+        // console.log(req)
+        //         res.render('debug', {
+        //             user: req.session.user,
+        //             loggedIn: req.session.loggedIn,
+        //         });
+    } catch (err) {
+        console.log(err);
+    }
 });
 
-router.get('/login', (req, res) => {
-    // Don't use this route - always access dashboard from the homepage
-    /* if (req.user) {
-        res.redirect('/dashboard');
-    } */
-    res.render('login', {
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-    });
-});
 
-// Route for logging user out
-router.get('/logout', (req, res) => {
-    if (req.session.loggedIn) {
-        req.session.destroy(() => {
-            res.status(204);
-            res.redirect('/');
+router.get('/users', async (req, res) => {
+    try {
+        const userData = await User.findAll({
+            attributes: { exclude: ['password'] },
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+            ],
         });
-    } else {
-        res.status(404).end();
+        // Serialize data so the template can read it
+        const users = userData.map((u) => u.get({ plain: true }));
+        console.clear();
+        console.log(users);
+
+        res.render('users', {
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+            users: users,
+        });
+    } catch (err) {
+        console.log(err);
     }
 });
 
-/* router.get('/signup', (req, res) => {
-    // If the user already has an account send them to the dashboard page
-    if (req.user) {
-        res.redirect('/dashboard');
-    }
-    res.render('signup', {
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-    });
-}); */
 
-/* // Here we've add our isAuthenticated middleware to this route.
-// If a user who is not logged in tries to access this route they will be redirected to the signup page
-router.get('/dashboard', withAuth, (req, res) => {
-    console.log(req.session.user);
-    res.render('dashboard', {
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-    });
-}); */
+
+
+router.get('/briefs', async (req, res) => {
+    try {
+
+        const briefData = await Brief.findAll({
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+            ],
+        });
+
+        // Serialize data so the template can read it
+        const briefs = briefData.map((brf) => brf.get({ plain: true }));
+        console.clear();
+        console.log(briefs);
+
+        res.render('briefs', {
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+            briefs: briefs,
+        });
+
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+
+
+router.get('/organisations', async (req, res) => {
+    try {
+        const orgData = await Organisation.findAll({
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+            ],
+        });
+
+        // Serialize data so the template can read it
+        const organisations = orgData.map((o) => o.get({ plain: true }));
+        console.clear();
+        console.log(organisations);
+
+        res.render('organisations', {
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+            organisations: organisations,
+        });
+
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+
+
 
 module.exports = router;

@@ -5,18 +5,19 @@
     "title": "",
     "date": "",
     "shortSummary": "",
-    "authors" : [
-        {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
-        {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
-    ],
-}
+    "owner {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
+
+    collaborators: [
+        { firstName: 'Tim', lastName: 'McKeaveney'},
+        { firstName: 'Rosa, lastName: 'Klebb'},
+        ],
  --}}
 
 <div class="rounded overflow-hidden shadow-lg">
-    <img class="w-full" src={{imageUrl}} alt={{imgDescription}}>
+    <img class="w-full" src={{ format_image_url imageUrl}} alt={{imgDescription}}>
     <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">{{title}}</div>
-    <p class="text-gray-600">{{date}}</p>
+    <p class="text-gray-600">{{format_date date_last_edited}}</p>
     <p class="text-gray-700 text-base">
         {{shortSummary}}
     </p>
