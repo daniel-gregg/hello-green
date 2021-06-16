@@ -81,6 +81,12 @@ router.get('/briefs', async (req, res) => {
                     model: Image,
                     attributes: ['path', 'description'],
                 },
+                {
+                    model: User,
+                    attributes: ['prefix', 'first_name', 'last_name'],
+                
+                },
+
             ],
         });
 
@@ -99,7 +105,6 @@ router.get('/briefs', async (req, res) => {
         console.log(err);
     }
 });
-
 
 
 router.get('/organisations', async (req, res) => {
@@ -150,35 +155,26 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
 
 })
 
-router.get('/dashboard', withAuth,  async (req, res) => {  //withAuth, add this in after the first argument when ready
+router.get('/dashboard', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
     try {
 
-
-        console.clear();
-        console.log(req.session.user)
-
-
-
-          const briefData = await Brief.findAll({
+        const briefData = await Brief.findAll({
             where: {
-                'owner_id' : req.session.user.id
-              },
-                include: [
+                'owner_id': req.session.user.id
+            },
+            include: [
                 {
                     model: Image,
                     attributes: ['path', 'description'],
                 },
             ],
         });
-        console.clear();
-        console.log(briefData)
 
         // Serialize data so the template can read it
         const briefs = briefData.map((brf) => brf.get({ plain: true }));
-        console.log(briefs);
 
         res.render('dashboard', {
-            briefs: briefs ,
+            briefs: briefs,
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
@@ -198,8 +194,8 @@ router.get('/login', async (req, res) => {
 
 router.get('/logout', async (req, res) => {
     req.session.loggedIn = false;
-    req.session.user = undefined;
-    res.redirect('/');
+    req.session.user = null;
+    res.redirect(200, '/');
 });
 
 
