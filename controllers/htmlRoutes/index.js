@@ -150,7 +150,7 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
 
 })
 
-router.get('/dashboard', async (req, res) => {  //withAuth, add this in after the first argument when ready
+router.get('/dashboard', withAuth,  async (req, res) => {  //withAuth, add this in after the first argument when ready
     try {
 
 
@@ -193,8 +193,13 @@ router.get('/dashboard', async (req, res) => {  //withAuth, add this in after th
 router.get('/login', async (req, res) => {
     res.render('login');
 
+});
 
 
+router.get('/logout', async (req, res) => {
+    req.session.loggedIn = false;
+    req.session.user = undefined;
+    res.redirect('/');
 });
 
 
