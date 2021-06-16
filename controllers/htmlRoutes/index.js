@@ -3,7 +3,7 @@ const express = require('express');
 // Requiring our custom middleware for checking if a user is logged in
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
-const {User, Organisation, Brief, Keyword, OrganisationUser, Image} = require('../../models')
+const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require('../../models')
 
 router.get('/', async (req, res) => {
     try {
@@ -135,108 +135,67 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
     try {
         const briefData = await Brief.findByPk(req.params.briefId);
         const brief = await briefData.get({ plain: true })
-        
+
         console.log(brief)
-    
+
         res.render('briefForm', {
             brief,
             //image: image.path,
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
-    } catch(err) {
+    } catch (err) {
         console.log(err)
     }
 
 })
 
-// User can add a new project brief
-router.get('/brief/new', async (req, res) => {  //withAuth, add this in after the first argument when ready
+router.get('/dashboard', async (req, res) => {  //withAuth, add this in after the first argument when ready
     try {
-        res.render('briefForm', {
-            
-            //image: image.path,
+
+
+        console.clear();
+        console.log(req.session.user)
+
+
+
+          const briefData = await Brief.findAll({
+            where: {
+                'owner_id' : req.session.user.id
+              },
+                include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+            ],
+        });
+        console.clear();
+        console.log(briefData)
+
+        // Serialize data so the template can read it
+        const briefs = briefData.map((brf) => brf.get({ plain: true }));
+        console.log(briefs);
+
+        res.render('dashboard', {
+            briefs: briefs ,
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
-    } catch(err) {
-        console.log(err)
+
+    } catch (err) {
+        console.log(err);
     }
-
-})
-
-router.get('/dashboard', (req, res) => {  //withAuth, add this in after the first argument when ready
-    projectBriefs = [
-        {
-        "id": 1,
-        "imageUrl" : "https://picsum.photos/200",
-        "imgDescription" : "A placeholder Image",
-        "title": "Project Example 1",
-        "date": "03/07/1984",
-        "shortSummary": "This is wayyyyy to short for a summary!",
-        "authors" : [
-            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
-            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
-            ],
-        },
-        {
-        "id": 2,
-        "imageUrl" : "https://picsum.photos/200",
-        "imgDescription" : "A placeholder Image",
-        "title": "Project Example 1",
-        "date": "03/07/1984",
-        "shortSummary": "This is wayyyyy to short for a summary!",
-        "authors" : [
-            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
-            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
-            ],
-        },
-        {
-        "id": 3,
-        "imageUrl" : "https://picsum.photos/200",
-        "imgDescription" : "A placeholder Image",
-        "title": "Project Example 1",
-        "date": "03/07/1984",
-        "shortSummary": "This is wayyyyy to short for a summary!",
-        "authors" : [
-            {"firstName": "Daniel", "lastName": "Gregg", "owner": true},
-            {"firstName": "Tim", "lastName": "McKeaveney", "owner": false},
-            ],
-        },
-        ]
-
-        console.log(projectBriefs[1].id)
-    res.render('dashboard', {
-        briefs: projectBriefs,
-        user: req.session.user,
-        loggedIn: req.session.loggedIn,
-    });
 });
+
 
 //withAuth, add this in after the first argument when ready
-router.get('/login' , async (req, res) => {
+router.get('/login', async (req, res) => {
     res.render('login');
+
+
+
 });
 
 
-router.get('/bioupdate', async (req, res) => {
-    try {
-
-        //Get user
-        //TO DO
-
-        //then get user data
-        const userData = await Brief.findByPk(req.params.briefId).get({plain: true});
-        
-        //then send to render for bioupdate
-        res.render('biopudate', {
-            userData: userData,
-            user: req.session.user,
-            loggedIn: req.session.loggedIn,
-        });
-    } catch(err) {
-        console.log(err)
-    }
-})
-        
 module.exports = router;
