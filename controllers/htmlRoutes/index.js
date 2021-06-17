@@ -3,7 +3,8 @@ const express = require('express');
 // Requiring our custom middleware for checking if a user is logged in
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
-const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require('../../models')
+const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require('../../models');
+const { findByPk } = require('../../models/image');
 
 router.get('/', async (req, res) => {
     try {
@@ -141,15 +142,39 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
         const briefData = await Brief.findByPk(req.params.briefId);
         const brief = await briefData.get({ plain: true })
 
+        const image = await Image.findByPk(brief.image_id)
+
         console.log(brief)
+        console.log(image.dataValues.path)
 
         res.render('briefForm', {
             brief,
-            //image: image.path,
+            imagepath: image.dataValues.path,
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
+        console.log(err)
+    }
+
+})
+
+//Add new brief:
+router.get('/brief/new', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
+    try {
+
+        const brief = {
+            title: 'Please enter a project title',
+            shortSummary: 'Please enter a short summary (<50 words)',
+            summary: 'Please enter a longer summary (<200 words)',
+            content: 'Please enter your project brief main content',
+        }
+        res.render('briefForm', {
+            brief,
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch(err) {
         console.log(err)
     }
 
@@ -184,6 +209,27 @@ router.get('/dashboard', withAuth, async (req, res) => {  //withAuth, add this i
     }
 });
 
+
+//Update bio:
+router.get('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
+    console.log(req.session.user)
+
+    //Find image for avatar from images using user.image_id
+    const image = await Image.findByPk(req.session.user.image_id)
+
+    //Find organisation using user.id
+
+    try {
+        res.render('bioupdate', {
+            imagepath: image.dataValues.path,
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch(err) {
+        console.log(err)
+    }
+
+})
 
 //withAuth, add this in after the first argument when ready
 router.get('/login', async (req, res) => {
