@@ -222,10 +222,5 @@ router.get('/login', async (req, res) => {
     res.render('login');
 });
 
-router.get('/logout', async (req, res) => {
-    req.session.loggedIn = false;
-    req.session.user = null;
-    res.redirect(200, '/');
-});
 
 module.exports = router;
