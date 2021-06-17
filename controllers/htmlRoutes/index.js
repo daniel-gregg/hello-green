@@ -240,10 +240,17 @@ router.get('/login', async (req, res) => {
     res.render('login');
 });
 
-router.get('/logout', async (req, res) => {
-    req.session.loggedIn = false;
-    req.session.user = null;
-    res.redirect(200, '/');
+
+// Route for logging user out
+router.get('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).redirect('/');
+        });
+    } else {
+        res.status(404).end();
+    }
 });
+
 
 module.exports = router;
