@@ -8,7 +8,6 @@ const { findByPk } = require('../../models/image');
 
 router.get('/', async (req, res) => {
     try {
-
         const briefData = await Brief.findAll({
             limit: 4,
             include: [
@@ -40,12 +39,10 @@ router.get('/', async (req, res) => {
             briefs: briefs,
             users: users,
         });
-
     } catch (err) {
         console.log(err);
     }
 });
-
 
 router.get('/users', async (req, res) => {
     try {
@@ -71,11 +68,8 @@ router.get('/users', async (req, res) => {
     }
 });
 
-
-
 router.get('/briefs', async (req, res) => {
     try {
-
         const briefData = await Brief.findAll({
             include: [
                 {
@@ -85,9 +79,7 @@ router.get('/briefs', async (req, res) => {
                 {
                     model: User,
                     attributes: ['prefix', 'first_name', 'last_name'],
-                
                 },
-
             ],
         });
 
@@ -101,12 +93,10 @@ router.get('/briefs', async (req, res) => {
             loggedIn: req.session.loggedIn,
             briefs: briefs,
         });
-
     } catch (err) {
         console.log(err);
     }
 });
-
 
 router.get('/organisations', async (req, res) => {
     try {
@@ -129,7 +119,6 @@ router.get('/organisations', async (req, res) => {
             loggedIn: req.session.loggedIn,
             organisations: organisations,
         });
-
     } catch (err) {
         console.log(err);
     }
@@ -137,15 +126,16 @@ router.get('/organisations', async (req, res) => {
 
 // Here we've add our isAuthenticated middleware to this route.
 // User can update their owned project briefs
-router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this in after the first argument when ready
+router.get('/brief/:briefId/edit', async (req, res) => {
+    //withAuth, add this in after the first argument when ready
     try {
         const briefData = await Brief.findByPk(req.params.briefId);
-        const brief = await briefData.get({ plain: true })
+        const brief = await briefData.get({ plain: true });
 
-        const image = await Image.findByPk(brief.image_id)
+        const image = await Image.findByPk(brief.image_id);
 
-        console.log(brief)
-        console.log(image.dataValues.path)
+        console.log(brief);
+        console.log(image.dataValues.path);
 
         res.render('briefForm', {
             brief,
@@ -154,38 +144,36 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
-
-})
+});
 
 //Add new brief:
-router.get('/brief/new', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
+router.get('/brief/new', withAuth, async (req, res) => {
+    //withAuth, add this in after the first argument when ready
     try {
-
         const brief = {
             title: 'Please enter a project title',
             shortSummary: 'Please enter a short summary (<50 words)',
             summary: 'Please enter a longer summary (<200 words)',
             content: 'Please enter your project brief main content',
-        }
+        };
         res.render('briefForm', {
             brief,
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
-    } catch(err) {
-        console.log(err)
+    } catch (err) {
+        console.log(err);
     }
+});
 
-})
-
-router.get('/dashboard', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
+router.get('/dashboard', withAuth, async (req, res) => {
+    //withAuth, add this in after the first argument when ready
     try {
-
         const briefData = await Brief.findAll({
             where: {
-                'owner_id': req.session.user.id
+                owner_id: req.session.user.id,
             },
             include: [
                 {
@@ -203,19 +191,18 @@ router.get('/dashboard', withAuth, async (req, res) => {  //withAuth, add this i
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
-
     } catch (err) {
         console.log(err);
     }
 });
 
-
 //Update bio:
-router.get('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
-    console.log(req.session.user)
+router.get('/bio/edit', withAuth, async (req, res) => {
+    //withAuth, add this in after the first argument when ready
+    console.log(req.session.user);
 
     //Find image for avatar from images using user.image_id
-    const image = await Image.findByPk(req.session.user.image_id)
+    const image = await Image.findByPk(req.session.user.image_id);
 
     //Find organisation using user.id
 
@@ -225,24 +212,20 @@ router.get('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
-    } catch(err) {
-        console.log(err)
+    } catch (err) {
+        console.log(err);
     }
-
-})
+});
 
 //withAuth, add this in after the first argument when ready
 router.get('/login', async (req, res) => {
     res.render('login');
-
 });
-
 
 router.get('/logout', async (req, res) => {
     req.session.loggedIn = false;
     req.session.user = null;
     res.redirect(200, '/');
 });
-
 
 module.exports = router;
