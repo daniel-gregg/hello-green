@@ -24,7 +24,7 @@
                     <div class="md:flex flex-row md:space-x-4 w-full text-s">
                         <div class="mb-3 space-y-2 w-full text-s">
                             <label class="font-semibold text-gray-600 py-2">Project Title<abbr title="required">*</abbr></label>
-                            <input placeholder="{{{brief.title}}}" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-12 px-4" required="required" type="text" name="title" id="title">
+                            <input placeholder="{{{brief.title}}}" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-12 px-4" type="text" name="title" id="title">
                             <p class="text-red text-xs hidden"></p>
                         </div>
                     </div>
@@ -42,12 +42,12 @@
 
                 <div class="flex-auto w-full mb-1 text-s space-y-2">
                     <label class="font-semibold text-gray-600 py-2">Content</label>
-                    <textarea required="" name="content" id="content" class="w-full min-h-[100px] max-h-[1000px] h-96 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" placeholder="Please enter the content of your project brief" spellcheck="false">{{brief.content}}</textarea>
+                    <textarea required="" name="content" id="content" class="w-full min-h-[100px] max-h-[1000px] h-96 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" required="required" placeholder="Please enter the content of your project brief" spellcheck="false">{{brief.content}}</textarea>
                 </div>
                 
                 <p class="text-xs text-red-500 text-center my-3">Required fields are marked with an asterisk <abbr title="Required field">*</abbr></p>
                 <div class="mt-5 text-center md:space-x-3 md:block flex flex-col-reverse">
-                    <button class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </button>
+                    <a href="/dashboard"><button type="button" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </button></a>
                     <button class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Save</button>
                 </div>
             </div>

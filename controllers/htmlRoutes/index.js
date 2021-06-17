@@ -231,6 +231,24 @@ router.get('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in
 
 })
 
+//Update bio:
+router.put('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
+    console.log(req.session.user.id)
+
+    const result = await User.update(
+        {
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            organisation: req.body.organisation,
+            text: req.body.text,
+        },
+        {where: {id: req.session.user.id}},
+      )
+      
+     })
+
+
 //withAuth, add this in after the first argument when ready
 router.get('/login', async (req, res) => {
     res.render('login');
