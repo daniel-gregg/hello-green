@@ -4,40 +4,16 @@ const express = require('express');
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
 const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require('../../models');
+const { briefsCardInfo, usersCardInfo, orgsCardInfo } = require('../../utils/cardsDataQueries')
 const { findByPk } = require('../../models/image');
 
 router.get('/', async (req, res) => {
     try {
-        const briefData = await Brief.findAll({
-            limit: 4,
-            include: [
-                {
-                    model: Image,
-                    attributes: ['path', 'description'],
-                },
-            ],
-        });
-        // Serialize data so the template can read it
-        const briefs = briefData.map((brf) => brf.get({ plain: true }));
-
-        const userData = await User.findAll({
-            limit: 4,
-            attributes: { exclude: ['password'] },
-            include: [
-                {
-                    model: Image,
-                    attributes: ['path', 'description'],
-                },
-            ],
-        });
-        // Serialize data so the template can read it
-        const users = userData.map((u) => u.get({ plain: true }));
-
         res.render('index', {
             user: req.session.user,
             loggedIn: req.session.loggedIn,
-            briefs: briefs,
-            users: users,
+            briefs: await briefsCardInfo({ limit: 4 }),
+            users: await usersCardInfo({ limit: 4 }),
         });
     } catch (err) {
         console.log(err);
@@ -46,22 +22,10 @@ router.get('/', async (req, res) => {
 
 router.get('/users', async (req, res) => {
     try {
-        const userData = await User.findAll({
-            attributes: { exclude: ['password'] },
-            include: [
-                {
-                    model: Image,
-                    attributes: ['path', 'description'],
-                },
-            ],
-        });
-        // Serialize data so the template can read it
-        const users = userData.map((u) => u.get({ plain: true }));
-
         res.render('users', {
             user: req.session.user,
             loggedIn: req.session.loggedIn,
-            users: users,
+            users: await usersCardInfo(),
         });
     } catch (err) {
         console.log(err);
@@ -70,28 +34,11 @@ router.get('/users', async (req, res) => {
 
 router.get('/briefs', async (req, res) => {
     try {
-        const briefData = await Brief.findAll({
-            include: [
-                {
-                    model: Image,
-                    attributes: ['path', 'description'],
-                },
-                {
-                    model: User,
-                    attributes: ['prefix', 'first_name', 'last_name'],
-                },
-            ],
-        });
-
-        // Serialize data so the template can read it
-        const briefs = briefData.map((brf) => brf.get({ plain: true }));
-        console.clear();
-        console.log(briefs);
 
         res.render('briefs', {
             user: req.session.user,
             loggedIn: req.session.loggedIn,
-            briefs: briefs,
+            briefs: await BriefCardInfo(),
         });
     } catch (err) {
         console.log(err);
@@ -100,24 +47,10 @@ router.get('/briefs', async (req, res) => {
 
 router.get('/organisations', async (req, res) => {
     try {
-        const orgData = await Organisation.findAll({
-            include: [
-                {
-                    model: Image,
-                    attributes: ['path', 'description'],
-                },
-            ],
-        });
-
-        // Serialize data so the template can read it
-        const organisations = orgData.map((o) => o.get({ plain: true }));
-        console.clear();
-        console.log(organisations);
-
         res.render('organisations', {
             user: req.session.user,
             loggedIn: req.session.loggedIn,
-            organisations: organisations,
+            organisations: await orgsCardInfo(),
         });
     } catch (err) {
         console.log(err);
@@ -229,10 +162,10 @@ router.put('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in
             organisation: req.body.organisation,
             text: req.body.text,
         },
-        {where: {id: req.session.user.id}},
-      )
-      
-     })
+        { where: { id: req.session.user.id } },
+    )
+
+})
 
 
 //withAuth, add this in after the first argument when ready
