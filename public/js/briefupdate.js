@@ -7,15 +7,15 @@ const briefFormHandler = async(event) => {
     const shortSummary = document.querySelector('#shortSummary').value;
     const summary = document.querySelector('#summary').value;
     const content = document.querySelector('#content').value;
-
-    const briefId = document.querySelector('#id').value
+    const briefId = document.querySelector('#briefId').value
+    const type = document.querySelector('#type').value
 
     console.log(briefId)
 
-    if(briefId){
+    if(type == "edit"){
         const response = await fetch(`/brief/${briefId}/edit`, {
             method: 'PUT',
-            body: JSON.stringify({ id, title, shortSummary, summary, content }),
+            body: JSON.stringify({ briefId, title, shortSummary, summary, content }),
             headers: {
             'Content-Type': 'application/json',
             },
@@ -26,8 +26,9 @@ const briefFormHandler = async(event) => {
         } else {
             alert('Failed to update brief');
         }
+
     } else {
-        const response = await fetch(`/brief/edit`, {
+        const response = await fetch(`/brief/new`, {
             method: 'POST',
             body: JSON.stringify({ title, shortSummary, summary, content }),
             headers: {

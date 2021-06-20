@@ -165,7 +165,6 @@ router.get('/brief/new', withAuth, async (req, res) => {  //withAuth, add this i
 
         
         res.render('briefForm', {
-            new: true,
             type: 'new',
             user: req.session.user,
             loggedIn: req.session.loggedIn,
@@ -239,16 +238,48 @@ router.put('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in
             organisation: req.body.organisation,
             text: req.body.text,
         },
-        {where: {id: req.session.user.id}},
-      )
-      
-     })
+        { where: { id: req.session.user.id } }
+    )
+})
 
+//Update brief:
+router.put('/brief/:briefId/edit', withAuth, async (req, res) => {//withAuth, add this in after the first argument when ready
+    console.log(req.session.user.id)
+
+    console.log(req.body)
+
+    const result = await Brief.update(
+        {
+            title: req.body.title,
+            shortSummary: req.body.shortSummary,
+            summary: req.body.summary,
+            content: req.body.content,
+        },
+        { where: { id: req.body.briefId } }
+    )
+
+    console.log(result)
+})
+
+//Post new brief:
+router.post('/brief/new', withAuth, async (req, res) => {//withAuth, add this in after the first argument when ready
+    console.log(req.session.user.id)
+    console.log(req.body)
+
+    const result = await Brief.create(
+        {
+        title: req.body.title,
+        shortSummary: req.body.shortSummary,
+        summary: req.body.summary,
+        content: req.body.content,
+        })
+
+    console.log(result)
+})
 
 //withAuth, add this in after the first argument when ready
 router.get('/login', async (req, res) => {
     res.render('login');
-
 });
 
 
