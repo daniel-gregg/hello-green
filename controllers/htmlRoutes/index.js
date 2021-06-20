@@ -58,20 +58,42 @@ router.get('/organisations', async (req, res) => {
 
 // Here we've add our isAuthenticated middleware to this route.
 // User can update their owned project briefs
-router.get('/brief/:briefId/edit', async (req, res) => {
+router.get('/brief/:briefId/edit', withAuth, async (req, res) => {
     //withAuth, add this in after the first argument when ready
     try {
         const briefData = await Brief.findByPk(req.params.briefId);
         const brief = await briefData.get({ plain: true });
-
         const image = await Image.findByPk(brief.image_id);
-
-        console.log(brief);
-        console.log(image.dataValues.path);
 
         res.render('briefForm', {
             brief,
             imagepath: image.dataValues.path,
+            user: req.session.user,
+            loggedIn: req.session.loggedIn,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.get('/brief/:briefId/', async (req, res) => {
+    //withAuth, add this in after the first argument when ready
+    try {
+        const briefData = await Brief.findByPk(req.params.briefId, {
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+                {
+                    model: User,
+                    attributes: ['prefix', 'first_name', 'last_name'],
+                },
+            ],
+        });
+
+        res.render('briefOverview', {
+            brief: await briefData.get({ plain: true }),
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
