@@ -14,7 +14,7 @@ const bioFormHandler = async(event) => {
         method: 'PUT',
         body: JSON.stringify({ first_name, last_name, email, organisation, bio }),
         headers: {
-        'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
     });
     

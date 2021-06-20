@@ -85,7 +85,6 @@ router.get('/briefs', async (req, res) => {
                 {
                     model: User,
                     attributes: ['prefix', 'first_name', 'last_name'],
-                
                 },
 
             ],
@@ -149,6 +148,7 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
 
         res.render('briefForm', {
             brief,
+            type: 'edit',
             imagepath: image.dataValues.path,
             user: req.session.user,
             loggedIn: req.session.loggedIn,
@@ -163,14 +163,10 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
 router.get('/brief/new', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
     try {
 
-        const brief = {
-            title: 'Please enter a project title',
-            shortSummary: 'Please enter a short summary (<50 words)',
-            summary: 'Please enter a longer summary (<200 words)',
-            content: 'Please enter your project brief main content',
-        }
+        
         res.render('briefForm', {
-            brief,
+            new: true,
+            type: 'new',
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
