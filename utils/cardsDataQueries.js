@@ -1,8 +1,8 @@
 const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require('../models/index');
 
-// wrapper functions for data input for the handlebars partials. Since thise data is 
-// being called in multiple places on the website; it makes sense to refactor these specific 
-//  model queries out. 
+// wrapper functions for data input for the handlebars partials. Since thise data is
+// being called in multiple places on the website; it makes sense to refactor these specific
+//  model queries out.
 
 const briefsCardInfo = async (options = {}) => {
     try {
@@ -45,11 +45,9 @@ const usersCardInfo = async (options = {}) => {
     } catch (err) {
         console.log(err);
     }
-}
-
+};
 
 const orgsCardInfo = async (options = {}) => {
-
     try {
         const orgData = await Organisation.findAll({
             ...options,
@@ -66,12 +64,10 @@ const orgsCardInfo = async (options = {}) => {
     } catch (err) {
         console.log(err);
     }
-
-}
-
+};
 
 module.exports = {
     briefsCardInfo,
     usersCardInfo,
-    orgsCardInfo
+    orgsCardInfo,
 };

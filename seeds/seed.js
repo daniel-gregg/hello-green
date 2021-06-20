@@ -16,7 +16,6 @@ const seedDatabase = async () => {
 
         const images = await Image.bulkCreate(imageData);
 
-
         const users = await User.bulkCreate(userData, {
             individualHooks: true,
             returning: true,
@@ -30,7 +29,6 @@ const seedDatabase = async () => {
 
         const collaborators = await sequelize.models.collaborators.bulkCreate(collaboratorData);
         process.exit(0);
-
     } catch (err) {
         console.log(err);
         process.exit(0);

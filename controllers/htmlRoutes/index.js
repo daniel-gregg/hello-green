@@ -4,7 +4,7 @@ const express = require('express');
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
 const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require('../../models');
-const { briefsCardInfo, usersCardInfo, orgsCardInfo } = require('../../utils/cardsDataQueries')
+const { briefsCardInfo, usersCardInfo, orgsCardInfo } = require('../../utils/cardsDataQueries');
 const { findByPk } = require('../../models/image');
 
 router.get('/', async (req, res) => {
@@ -34,11 +34,10 @@ router.get('/users', async (req, res) => {
 
 router.get('/briefs', async (req, res) => {
     try {
-
         res.render('briefs', {
             user: req.session.user,
             loggedIn: req.session.loggedIn,
-            briefs: await BriefCardInfo(),
+            briefs: await briefsCardInfo(),
         });
     } catch (err) {
         console.log(err);
@@ -151,8 +150,9 @@ router.get('/bio/edit', withAuth, async (req, res) => {
 });
 
 //Update bio:
-router.put('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
-    console.log(req.session.user.id)
+router.put('/bio/edit', withAuth, async (req, res) => {
+    //withAuth, add this in after the first argument when ready
+    console.log(req.session.user.id);
 
     const result = await User.update(
         {
@@ -162,17 +162,14 @@ router.put('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in
             organisation: req.body.organisation,
             text: req.body.text,
         },
-        { where: { id: req.session.user.id } },
-    )
-
-})
-
+        { where: { id: req.session.user.id } }
+    );
+});
 
 //withAuth, add this in after the first argument when ready
 router.get('/login', async (req, res) => {
     res.render('login');
 });
-
 
 // Route for logging user out
 router.get('/logout', (req, res) => {
@@ -184,6 +181,5 @@ router.get('/logout', (req, res) => {
         res.status(404).end();
     }
 });
-
 
 module.exports = router;
