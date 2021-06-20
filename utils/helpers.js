@@ -14,13 +14,12 @@ module.exports = {
         } else if (typeof imageURL === 'undefined') {
             return '/images/default.png';
         } else if (imageURL.slice(0, 4) === 'http') {
-            // coded to an external website 
+            // coded to an external website
             //  WARNING potential vulnerability
             return imageURL;
         } else {
             // assumme it's a reference to <public>/images/imageString
             return `/images/${imageURL}`;
         }
-    }
-
+    },
 };

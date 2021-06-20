@@ -21,7 +21,7 @@ owner_id: 9,
 user: { last_name: 'Fu Yung', first_name: 'Abe' }
 
 
-// TODO:  need to add colloaborators....
+// TODO: need to add colloaborators....
 collaborators : [ {...}, ...]
 
 
@@ -31,19 +31,19 @@ collaborators : [ {...}, ...]
 {/each}
 --}}
 
-<a href="/brief/{{{id}}}/edit">
-<div class="rounded overflow-hidden shadow-lg">
-  <img class="w-full" src={{ format_image_url image.path}} alt={{ image.description }}>
-  <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">{{title}}</div>
-    <p class="text-gray-600">{{format_date date_last_edited}}</p> 
-    <p class="text-gray-700 text-base">
-      {{shortSummary}}
-    </p>
+<a href="/brief/{{{id}}}">
+  <div class="rounded overflow-hidden shadow-lg">
+    <img class="w-full" src={{ format_image_url image.path}} alt={{ image.description }}>
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">{{title}}</div>
+      <p class="text-gray-600">{{format_date date_last_edited}}</p>
+      <p class="text-gray-700 text-base">
+        {{shortSummary}}
+      </p>
+    </div>
+    <div class="font-bold text-xl mb-2">
+      <span class="inline-block bg-gray-300 rounded-md px-3 py-1 text-sm font-bold text-black mr-2 mb-2">
+        {{user.prefix}} {{user.first_name}} {{user.last_name}} </span>
+    </div>
   </div>
-  <div class="font-bold text-xl mb-2">
-    <span
-      class="inline-block bg-gray-300 rounded-md px-3 py-1 text-sm font-bold text-black mr-2 mb-2">
-      {{user.prefix}} {{user.first_name}}  {{user.last_name}}  </span>
-  </div>
-</div></a>  
+</a>
