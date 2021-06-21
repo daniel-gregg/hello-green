@@ -9,40 +9,11 @@ const { findByPk } = require('../../models/image');
 
 router.get('/', async (req, res) => {
     try {
-<<<<<<< HEAD
-
-        const briefData = await Brief.findAll({
-            limit: 4,
-            include: [
-                {
-                    model: Image,
-                    attributes: ['path', 'description'],
-                },
-            ],
-        });
-        // Serialize data so the template can read it
-        const briefs = briefData.map((brf) => brf.get({ plain: true })).slice(0,3);
-
-        const userData = await User.findAll({
-            limit: 4,
-            attributes: { exclude: ['password'] },
-            include: [
-                {
-                    model: Image,
-                    attributes: ['path', 'description'],
-                },
-            ],
-        });
-        // Serialize data so the template can read it
-        const users = userData.map((u) => u.get({ plain: true })).slice(0,3);
-
-=======
->>>>>>> 40dc19fc33d2cd9370a9c5e00d0ff2f5c6665562
         res.render('index', {
             user: req.session.user,
             loggedIn: req.session.loggedIn,
-            briefs: await briefsCardInfo({ limit: 4 }),
-            users: await usersCardInfo({ limit: 4 }),
+            briefs: await briefsCardInfo({ limit: 3 }),
+            users: await usersCardInfo({ limit: 3 }),
         });
     } catch (err) {
         console.log(err);
@@ -155,16 +126,6 @@ router.get('/brief/:briefId/', async (req, res) => {
 router.get('/brief/new', withAuth, async (req, res) => {
     //withAuth, add this in after the first argument when ready
     try {
-<<<<<<< HEAD
-=======
-        const brief = {
-            title: 'Please enter a project title',
-            shortSummary: 'Please enter a short summary (<50 words)',
-            summary: 'Please enter a longer summary (<200 words)',
-            content: 'Please enter your project brief main content',
-        };
-
->>>>>>> 40dc19fc33d2cd9370a9c5e00d0ff2f5c6665562
         res.render('briefForm', {
             type: 'new',
             user: req.session.user,
@@ -269,9 +230,6 @@ router.post('/brief/new', withAuth, async (req, res) => {//withAuth, add this in
 
     console.log(result)
 })
-
-    );
-});
 
 
 //withAuth, add this in after the first argument when ready
