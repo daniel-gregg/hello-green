@@ -2,8 +2,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-
-class Organisation extends Model { }
+class Organisation extends Model {}
 
 // Remember id, created_date, updated_date columns are created for you.
 Organisation.init(
