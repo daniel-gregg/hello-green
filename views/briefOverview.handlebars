@@ -1,0 +1,27 @@
+<div class="grid mt-8  gap-8 grid-cols-1">
+    <div class="grid justify-items-center">
+        <h2 class="font-semibold text-lg mr-auto ">{{brief.title}}</h2>
+
+        <a href="/bio/{{{brief.owner_id}}}">
+        <div class="font-bold text-xl mb-2">
+
+            <span class="inline-block bg-gray-300 rounded-md px-3 py-1 text-sm font-bold text-black mr-2 mb-2">
+                {{brief.user.prefix}} {{brief.user.first_name}} {{brief.user.last_name}} </span>
+        </div>
+        </a>
+
+        <a href="/brief/{{{brief.id}}}/edit">
+            <button
+                class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Edit</button>
+        </a>
+
+    </div>
+
+    <div class="flex flex-row ">
+        <div>
+            <img class="w-44 h-44 mr-4 object-cover float-left" src={{ format_image_url brief.image.path }}
+                alt="{{{brief.image.description}}}">
+            {{brief.content}}
+        </div>
+    </div>
+</div>

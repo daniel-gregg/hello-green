@@ -1,3 +1,4 @@
+
 <form class="grid mt-8  gap-8 grid-cols-1" id="brief-form">
 	<div class="flex flex-col ">
 		<div class="bg-white shadow-md rounded-3xl p-5">
@@ -29,7 +30,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="flex-auto w-full mb-1 text-s space-y-10">
                     <label class="font-semibold text-gray-600 py-4">Short Summary</label>
                     <textarea placeholder="Please enter a short summary of less than 50 words" required="" name="shortSummary" id="shortSummary" class="w-full min-h-[100px] max-h-[200px] h-24 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" spellcheck="false">{{#if brief.shortSummary}} {{brief.shortSummary}} {{else }} {{/if}}</textarea>
@@ -43,9 +43,11 @@
                 <div class="flex-auto w-full mb-1 text-s space-y-2">
                     <label class="font-semibold text-gray-600 py-2">Content</label>
                     <textarea required="" name="content" id="content" class="w-full min-h-[100px] max-h-[1000px] h-96 appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg  py-4 px-4" required="required" placeholder="Please enter the content of your project brief" spellcheck="false">{{#if brief.content}} {{brief.content}}{{else}} {{/if}} </textarea>
+
                 </div>
-                
-                <p class="text-xs text-red-500 text-center my-3">Required fields are marked with an asterisk <abbr title="Required field">*</abbr></p>
+
+                <p class="text-xs text-red-500 text-center my-3">Required fields are marked with an asterisk <abbr
+                        title="Required field">*</abbr></p>
                 <div class="mt-5 text-center md:space-x-3 md:block flex flex-col-reverse">
                     <a href="/dashboard"><button type="button" class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"> Cancel </button></a>
                     <button type="submit" class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Save</button>

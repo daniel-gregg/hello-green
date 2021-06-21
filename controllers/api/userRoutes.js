@@ -13,9 +13,9 @@ router.post('/login', async (req, res) => {
                 email: req.body.email,
             },
         });
-     
+
         console.log(user);
-    
+
         if (!user) {
             res.status(400).json({ message: 'No user account found!' });
             return;
@@ -70,7 +70,7 @@ router.post('/signup', async (req, res) => {
 router.get('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
-            res.status(204).end();
+            res.status(204).redirect('/');
         });
     } else {
         res.status(404).end();
