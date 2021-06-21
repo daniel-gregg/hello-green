@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
             ],
         });
         // Serialize data so the template can read it
-        const briefs = briefData.map((brf) => brf.get({ plain: true }));
+        const briefs = briefData.map((brf) => brf.get({ plain: true })).slice(0,3);
 
         const userData = await User.findAll({
             limit: 4,
@@ -32,7 +32,7 @@ router.get('/', async (req, res) => {
             ],
         });
         // Serialize data so the template can read it
-        const users = userData.map((u) => u.get({ plain: true }));
+        const users = userData.map((u) => u.get({ plain: true })).slice(0,3);
 
         res.render('index', {
             user: req.session.user,
@@ -162,8 +162,6 @@ router.get('/brief/:briefId/edit', async (req, res) => {  //withAuth, add this i
 //Add new brief:
 router.get('/brief/new', withAuth, async (req, res) => {  //withAuth, add this in after the first argument when ready
     try {
-
-        
         res.render('briefForm', {
             type: 'new',
             user: req.session.user,
@@ -191,7 +189,7 @@ router.get('/dashboard', withAuth, async (req, res) => {  //withAuth, add this i
         });
 
         // Serialize data so the template can read it
-        const briefs = briefData.map((brf) => brf.get({ plain: true }));
+        const briefs = briefData.map((brf) => brf.get({ plain: true })).slice(0,3);
 
         res.render('dashboard', {
             briefs: briefs,
@@ -244,9 +242,6 @@ router.put('/bio/edit', withAuth, async (req, res) => {  //withAuth, add this in
 
 //Update brief:
 router.put('/brief/:briefId/edit', withAuth, async (req, res) => {//withAuth, add this in after the first argument when ready
-    console.log(req.session.user.id)
-
-    console.log(req.body)
 
     const result = await Brief.update(
         {
@@ -257,22 +252,19 @@ router.put('/brief/:briefId/edit', withAuth, async (req, res) => {//withAuth, ad
         },
         { where: { id: req.body.briefId } }
     )
-
-    console.log(result)
+    return result;
 })
 
 //Post new brief:
 router.post('/brief/new', withAuth, async (req, res) => {//withAuth, add this in after the first argument when ready
-    console.log(req.session.user.id)
-    console.log(req.body)
 
-    const result = await Brief.create(
-        {
+    const result = await Brief.create({
         title: req.body.title,
         shortSummary: req.body.shortSummary,
         summary: req.body.summary,
         content: req.body.content,
-        })
+        owner_id: req.session.user.id,
+    });
 
     console.log(result)
 })

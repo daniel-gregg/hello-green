@@ -1,32 +1,28 @@
 const briefFormHandler = async(event) => {
     event.preventDefault();
-
-    console.log("I am finding me!!")
+    event.stopPropagation();
 
     const title = document.querySelector('#title').value;
     const shortSummary = document.querySelector('#shortSummary').value;
     const summary = document.querySelector('#summary').value;
     const content = document.querySelector('#content').value;
-    const briefId = document.querySelector('#briefId').value
-    const type = document.querySelector('#type').value
+    const briefId = document.querySelector('#briefId').value;
+    const briefType = document.querySelector('#briefType').value;
 
-    console.log(briefId)
+    console.log(briefId);
+    console.log(briefType);
 
-    if(type == "edit"){
-        const response = await fetch(`/brief/${briefId}/edit`, {
-            method: 'PUT',
-            body: JSON.stringify({ briefId, title, shortSummary, summary, content }),
-            headers: {
-            'Content-Type': 'application/json',
-            },
-        });
-        
-        if (response.ok) {
+    if (briefType == 'edit') {
+        try {
+            const response = await fetch(`/brief/${briefId}/edit`, {
+                method: 'PUT',
+                body: JSON.stringify({ briefId, title, shortSummary, summary, content }),
+                headers: { 'Content-Type': 'application/json' },
+            });
             document.location.replace('/dashboard');
-        } else {
-            alert('Failed to update brief');
+        } catch (err) {
+            console.log(err)
         }
-
     } else {
         const response = await fetch(`/brief/new`, {
             method: 'POST',
@@ -35,7 +31,6 @@ const briefFormHandler = async(event) => {
             'Content-Type': 'application/json',
             },
         });
-        
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {

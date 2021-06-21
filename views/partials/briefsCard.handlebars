@@ -32,8 +32,8 @@ collaborators : [ {...}, ...]
 --}}
 
 <a href="/brief/{{{id}}}/edit">
-<div class="rounded overflow-hidden shadow-lg">
-  <img class="w-full" src={{ format_image_url image.path}} alt={{ image.description }}>
+<div class="rounded overflow-hidden shadow-lg ">
+  <img class="w-full max-h-28 object-contain" src={{ format_image_url image.path}} alt={{ image.description }}>
   <div class="px-6 py-4">
     <div class="font-bold text-xl mb-2">{{title}}</div>
     <p class="text-gray-600">{{format_date date_last_edited}}</p> 
