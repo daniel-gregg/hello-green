@@ -139,6 +139,7 @@ router.get('/brief/new', withAuth, async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
     //withAuth, add this in after the first argument when ready
     try {
+        console.log(req.session.user)
         const briefData = await Brief.findAll({
             where: {
                 owner_id: req.session.user.id,
@@ -150,9 +151,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
                 },
             ],
         });
-
+        console.log(req.session.user)
         // Serialize data so the template can read it
-        const briefs = briefData.map((brf) => brf.get({ plain: true })).slice(0,3);
+        const briefs = briefData.map((brf) => brf.get({ plain: true }));
 
         res.render('dashboard', {
             briefs: briefs,
@@ -189,6 +190,8 @@ router.get('/bio/edit', withAuth, async (req, res) => {
 router.put('/bio/edit', withAuth, async (req, res) => {
     //withAuth, add this in after the first argument when ready
     console.log(req.session.user.id);
+    console.log('getting to the put stage...');
+    console.log(req.body);
 
     const result = await User.update(
         {
@@ -199,7 +202,9 @@ router.put('/bio/edit', withAuth, async (req, res) => {
             text: req.body.text,
         },
         { where: { id: req.session.user.id } }
-    )
+    );
+
+    res.status(200).json(result);
 })
 
 //Update brief:

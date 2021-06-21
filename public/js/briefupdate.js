@@ -1,4 +1,4 @@
-const briefFormHandler = async(event) => {
+const briefFormHandler = async (event) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -14,21 +14,21 @@ const briefFormHandler = async(event) => {
 
     if (briefType == 'edit') {
         try {
-            const response = await fetch(`/brief/${briefId}/edit`, {
+            const response = fetch(`/brief/${briefId}/edit`, {
                 method: 'PUT',
                 body: JSON.stringify({ briefId, title, shortSummary, summary, content }),
                 headers: { 'Content-Type': 'application/json' },
             });
             document.location.replace('/dashboard');
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
     } else {
         const response = await fetch(`/brief/new`, {
             method: 'POST',
             body: JSON.stringify({ title, shortSummary, summary, content }),
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
         });
         if (response.ok) {
@@ -37,10 +37,6 @@ const briefFormHandler = async(event) => {
             alert('Failed to create new brief');
         }
     }
+};
 
-    
-}
-
-document
-  .querySelector('#brief-form')
-  .addEventListener('submit', briefFormHandler);
+document.querySelector('#brief-form').addEventListener('submit', briefFormHandler);

@@ -17,31 +17,31 @@
                                 </label>
 						</div>
 					</div>
+                    <input value={{user.id}} type="hidden" name="userId" id="userId">
                     <div class="md:flex flex-row md:space-x-4 w-full text-s">
                         <div class="mb-3 space-y-2 w-full text-s">
                             <label class="font-semibold text-gray-600 py-2">First Name</label>
-                            <input placeholder={{user.first_name}} required="required" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" name="first_name" id="first_name">
+                            <input value={{user.first_name}} required="required" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" name="first_name" id="first_name">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-s">
                             <label class="font-semibold text-gray-600 py-2">Last Name</label>
-                            <input placeholder={{user.last_name}} required="required" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" name="last_name" id="last_name">
+                            <input value={{user.last_name}} required="required" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" name="last_name" id="last_name">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-s">
                             <label class="font-semibold text-gray-600 py-2">Email Address</label>
-                            <input placeholder={{user.email}} required="required" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" name="email" id="email">
+                            <input value={{user.email}} required="required" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" name="email" id="email">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                     </div>
                 <div class="md:flex md:flex-row md:space-x-4 w-3/12 text-s">
                     <div class="w-full flex flex-col mb-3">
                         <label class="font-semibold text-gray-600 py-2">Organisation<abbr title="required">*</abbr></label>
-                        <select required="required" class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " name="organisation" id="organisation">
-                            <option value="">Select an organisation</option>
-                            <option value="">Spectre</option>
-                            <option value="">M.A.D.</option>
-                            <option value="">KAOS</option>
+                        <select placeholder="Select an organisation" required="required" class="block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4 md:w-full " name="organisation" id="organisation">
+                            <option value="Spectre">Spectre</option>
+                            <option value="M.A.D.">M.A.D.</option>
+                            <option value="KAOS">KAOS</option>
                         </select>
                         <p class="text-sm text-red-500 hidden mt-3" id="error">Please fill out this field.</p>
                     </div>
