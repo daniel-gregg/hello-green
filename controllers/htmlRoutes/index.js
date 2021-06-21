@@ -9,6 +9,35 @@ const { findByPk } = require('../../models/image');
 
 router.get('/', async (req, res) => {
     try {
+<<<<<<< HEAD
+
+        const briefData = await Brief.findAll({
+            limit: 4,
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+            ],
+        });
+        // Serialize data so the template can read it
+        const briefs = briefData.map((brf) => brf.get({ plain: true })).slice(0,3);
+
+        const userData = await User.findAll({
+            limit: 4,
+            attributes: { exclude: ['password'] },
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+            ],
+        });
+        // Serialize data so the template can read it
+        const users = userData.map((u) => u.get({ plain: true })).slice(0,3);
+
+=======
+>>>>>>> 40dc19fc33d2cd9370a9c5e00d0ff2f5c6665562
         res.render('index', {
             user: req.session.user,
             loggedIn: req.session.loggedIn,
@@ -34,6 +63,25 @@ router.get('/users', async (req, res) => {
 
 router.get('/briefs', async (req, res) => {
     try {
+        const briefData = await Brief.findAll({
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+                {
+                    model: User,
+                    attributes: ['prefix', 'first_name', 'last_name'],
+                },
+
+            ],
+        });
+
+        // Serialize data so the template can read it
+        const briefs = briefData.map((brf) => brf.get({ plain: true }));
+        console.clear();
+        console.log(briefs);
+
         res.render('briefs', {
             user: req.session.user,
             loggedIn: req.session.loggedIn,
@@ -67,6 +115,7 @@ router.get('/brief/:briefId/edit', withAuth, async (req, res) => {
 
         res.render('briefForm', {
             brief,
+            type: 'edit',
             imagepath: image.dataValues.path,
             user: req.session.user,
             loggedIn: req.session.loggedIn,
@@ -106,14 +155,18 @@ router.get('/brief/:briefId/', async (req, res) => {
 router.get('/brief/new', withAuth, async (req, res) => {
     //withAuth, add this in after the first argument when ready
     try {
+<<<<<<< HEAD
+=======
         const brief = {
             title: 'Please enter a project title',
             shortSummary: 'Please enter a short summary (<50 words)',
             summary: 'Please enter a longer summary (<200 words)',
             content: 'Please enter your project brief main content',
         };
+
+>>>>>>> 40dc19fc33d2cd9370a9c5e00d0ff2f5c6665562
         res.render('briefForm', {
-            brief,
+            type: 'new',
             user: req.session.user,
             loggedIn: req.session.loggedIn,
         });
@@ -138,7 +191,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         });
 
         // Serialize data so the template can read it
-        const briefs = briefData.map((brf) => brf.get({ plain: true }));
+        const briefs = briefData.map((brf) => brf.get({ plain: true })).slice(0,3);
 
         res.render('dashboard', {
             briefs: briefs,
@@ -185,8 +238,41 @@ router.put('/bio/edit', withAuth, async (req, res) => {
             text: req.body.text,
         },
         { where: { id: req.session.user.id } }
+    )
+})
+
+//Update brief:
+router.put('/brief/:briefId/edit', withAuth, async (req, res) => {//withAuth, add this in after the first argument when ready
+
+    const result = await Brief.update(
+        {
+            title: req.body.title,
+            shortSummary: req.body.shortSummary,
+            summary: req.body.summary,
+            content: req.body.content,
+        },
+        { where: { id: req.body.briefId } }
+    )
+    return result;
+})
+
+//Post new brief:
+router.post('/brief/new', withAuth, async (req, res) => {//withAuth, add this in after the first argument when ready
+
+    const result = await Brief.create({
+        title: req.body.title,
+        shortSummary: req.body.shortSummary,
+        summary: req.body.summary,
+        content: req.body.content,
+        owner_id: req.session.user.id,
+    });
+
+    console.log(result)
+})
+
     );
 });
+
 
 //withAuth, add this in after the first argument when ready
 router.get('/login', async (req, res) => {
