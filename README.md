@@ -1,4 +1,5 @@
-# Express-passport-handlebars-demo
+# Hello Green skeleton
+
 
 A simple Auth app using express, passport and handlebars
 
