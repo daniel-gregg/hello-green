@@ -6,14 +6,12 @@ const briefFormHandler = async (event) => {
     const shortSummary = document.querySelector('#shortSummary').value;
     const summary = document.querySelector('#summary').value;
     const content = document.querySelector('#content').value;
-    const briefId = document.querySelector('#briefId').value;
     const briefType = document.querySelector('#briefType').value;
 
-    console.log(briefId);
-    console.log(briefType);
 
     if (briefType == 'edit') {
         try {
+            const briefId = document.querySelector('#briefId').value;
             const response = fetch(`/brief/${briefId}/edit`, {
                 method: 'PUT',
                 body: JSON.stringify({ briefId, title, shortSummary, summary, content }),
