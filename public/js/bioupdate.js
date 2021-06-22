@@ -1,5 +1,6 @@
 const bioFormHandler = async (event) => {
     event.preventDefault();
+    event.stopPropagation();
 
     console.log('I am finding me!!');
 
@@ -9,16 +10,16 @@ const bioFormHandler = async (event) => {
     const organisation = document.querySelector('#organisation').value;
     const text = document.querySelector('#bio').value;
 
-    console.log(document.querySelector('#userId').value);
-
+    console.log(text);
+    console.log(first_name)
     const response = await fetch(`/bio/edit`, {
         method: 'PUT',
         body: JSON.stringify({
-            first_name: first_name,
-            last_name: last_name,
-            email: email,
-            organisation: organisation,
-            text: text,
+            first_name,
+            last_name,
+            email,
+            organisation,
+            text,
         }),
         headers: {
             'Content-Type': 'application/json',

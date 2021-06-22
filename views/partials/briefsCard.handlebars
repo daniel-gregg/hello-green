@@ -1,45 +1,15 @@
-{{!-- ***Data format for briefs ***************************
-{
-id: 4,
-title: 'A Tale of Two Tails',
-shortSummary: 'The Chief asks 99 to pick up some important items on her day off, each of which comprises a part of a
-secret formula.',
-summary: "The Chief asks 99 to pick up some important items on her day off, each of which comprises a part of a secret
-formula. Meanwhile, Max teaches a couple of new recruits. Max decides to have the trainees brush up on how to tail
-suspects, and they are asked to tail 99 while she's on her mission.",
-content: "The Chief asks 99 to pick up some important items on her day off, each of which comprises a part of a secret
-formula. Meanwhile, Max teaches a couple of new recruits. Max decides to have the trainees brush up on how to tail
-suspects, and they are asked to tail 99 while she's on her mission. Although asked to be inconspicous, they fail at this
-miserably, causing 99 to believe that KAOS is after her. She calls the Chief to ask for
-help, so he assigns Max's recruits to be on the lookout for the KAOS agents, in essence asking them to tail
-themselves!",
-date_created: 2021-06-14T10:58:04.000Z,
-date_last_edited: 2021-06-14T10:58:04.000Z,
-image_id: null,
-userId: null,
-owner_id: 9,
-user: { last_name: 'Fu Yung', first_name: 'Abe' }
 
 
-// TODO: need to add colloaborators....
-collaborators : [ {...}, ...]
 
-
-{#each collaborator}
-<span class="inline-block bg-gray-200 rounded-md px-3 py-1 text-sm font-semi-bold text-gray-600 mr-2 mb-2">
-  {this.firstName} {this.lastName} </span>
-{/each}
---}}
-
-<a href="/brief/{{{id}}}/edit">
-<div class="rounded overflow-hidden shadow-lg ">
-  <img class="w-full max-h-28 object-contain" src={{ format_image_url image.path}} alt={{ image.description }}>
-  <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">{{title}}</div>
-    <p class="text-gray-600">{{format_date date_last_edited}}</p> 
-    <p class="text-gray-700 text-base">
-      {{shortSummary}}
-    </p>
+  <div class="rounded overflow-hidden shadow-lg ">
+    <a href="/brief/{{{id}}}/edit">
+      <img class="w-full max-h-28 object-contain" src={{ format_image_url image.path}} alt={{ image.description }}>
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">{{title}}</div>
+        <p class="text-gray-600">{{format_date date_last_edited}}</p> 
+        <p class="text-gray-700 text-base">
+          {{shortSummary}}
+        </p>
+      </div>
+    </a>
   </div>
-</div>
-</a>

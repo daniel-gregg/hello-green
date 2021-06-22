@@ -20,7 +20,9 @@
                                 </label>
 						</div>
 					</div>
+                    {{#if brief.id}}
                     <input value="{{brief.id}}" type="hidden" name="briefId" id="briefId">
+                    {{/if}}
                     <input value="{{type}}" type="hidden" name="briefType" id="briefType">
                     <div class="md:flex flex-row md:space-x-4 w-full text-s">
                         <div class="mb-3 space-y-2 w-full text-s">

@@ -97,7 +97,6 @@ router.get('/brief/:briefId/edit', withAuth, async (req, res) => {
 });
 
 router.get('/brief/:briefId/', async (req, res) => {
-    //withAuth, add this in after the first argument when ready
     try {
         const briefData = await Brief.findByPk(req.params.briefId, {
             include: [
@@ -123,7 +122,7 @@ router.get('/brief/:briefId/', async (req, res) => {
 });
 
 //Add new brief:
-router.get('/brief/new', withAuth, async (req, res) => {
+router.get('/new', withAuth, async (req, res) => {
     //withAuth, add this in after the first argument when ready
     try {
         res.render('briefForm', {
@@ -167,18 +166,14 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 //Update bio:
 router.get('/bio/edit', withAuth, async (req, res) => {
-    //withAuth, add this in after the first argument when ready
-    console.log(req.session.user);
-
     //Find image for avatar from images using user.image_id
     const image = await Image.findByPk(req.session.user.image_id);
-
-    //Find organisation using user.id
+    const user = await User.findByPk(req.session.user.id);
 
     try {
         res.render('bioupdate', {
             imagepath: image.dataValues.path,
-            user: req.session.user,
+            user: user.dataValues,
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
@@ -218,8 +213,8 @@ router.put('/brief/:briefId/edit', withAuth, async (req, res) => {//withAuth, ad
             content: req.body.content,
         },
         { where: { id: req.body.briefId } }
-    )
-    return result;
+    );
+    res.status(200).json(result);
 })
 
 //Post new brief:
@@ -233,7 +228,7 @@ router.post('/brief/new', withAuth, async (req, res) => {//withAuth, add this in
         owner_id: req.session.user.id,
     });
 
-    console.log(result)
+    res.status(200).json(result);
 })
 
 
