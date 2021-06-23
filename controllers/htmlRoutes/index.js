@@ -4,7 +4,7 @@ const express = require('express');
 const withAuth = require('../../utils/withAuth');
 const router = express.Router();
 const { User, Organisation, Brief, Keyword, OrganisationUser, Image } = require('../../models');
-const { briefsCardInfo, usersCardInfo, orgsCardInfo } = require('../../utils/cardsDataQueries');
+const { briefsCardInfo, usersCardInfo, orgsCardInfo, userInfoByPk } = require('../../utils/cardsDataQueries');
 const { findByPk } = require('../../models/image');
 
 router.get('/', async (req, res) => {
@@ -44,7 +44,6 @@ router.get('/briefs', async (req, res) => {
                     model: User,
                     attributes: ['prefix', 'first_name', 'last_name'],
                 },
-
             ],
         });
 
@@ -138,7 +137,7 @@ router.get('/new', withAuth, async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
     //withAuth, add this in after the first argument when ready
     try {
-        console.log(req.session.user)
+        console.log(req.session.user);
         const briefData = await Brief.findAll({
             where: {
                 owner_id: req.session.user.id,
@@ -150,7 +149,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
                 },
             ],
         });
-        console.log(req.session.user)
+        console.log(req.session.user);
         // Serialize data so the template can read it
         const briefs = briefData.map((brf) => brf.get({ plain: true }));
 
@@ -166,14 +165,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 //Update bio:
 router.get('/bio/edit', withAuth, async (req, res) => {
-    //Find image for avatar from images using user.image_id
-    const image = await Image.findByPk(req.session.user.image_id);
-    const user = await User.findByPk(req.session.user.id);
+    const userInfo = await userInfoByPk(req.session.user.id);
 
     try {
         res.render('bioupdate', {
-            imagepath: image.dataValues.path,
-            user: user.dataValues,
+            user: userInfo,
             loggedIn: req.session.loggedIn,
         });
     } catch (err) {
@@ -200,10 +196,11 @@ router.put('/bio/edit', withAuth, async (req, res) => {
     );
 
     res.status(200).json(result);
-})
+});
 
 //Update brief:
-router.put('/brief/:briefId/edit', withAuth, async (req, res) => {//withAuth, add this in after the first argument when ready
+router.put('/brief/:briefId/edit', withAuth, async (req, res) => {
+    //withAuth, add this in after the first argument when ready
 
     const result = await Brief.update(
         {
@@ -215,10 +212,11 @@ router.put('/brief/:briefId/edit', withAuth, async (req, res) => {//withAuth, ad
         { where: { id: req.body.briefId } }
     );
     res.status(200).json(result);
-})
+});
 
 //Post new brief:
-router.post('/brief/new', withAuth, async (req, res) => {//withAuth, add this in after the first argument when ready
+router.post('/brief/new', withAuth, async (req, res) => {
+    //withAuth, add this in after the first argument when ready
 
     const result = await Brief.create({
         title: req.body.title,
@@ -229,8 +227,7 @@ router.post('/brief/new', withAuth, async (req, res) => {//withAuth, add this in
     });
 
     res.status(200).json(result);
-})
-
+});
 
 //withAuth, add this in after the first argument when ready
 router.get('/login', async (req, res) => {

@@ -14,7 +14,7 @@ const briefsCardInfo = async (options = {}) => {
                     attributes: ['path', 'description'],
                 },
                 {
-                    model: User,
+                    model: User, 
                     attributes: ['prefix', 'first_name', 'last_name'],
                 },
             ],
@@ -47,6 +47,26 @@ const usersCardInfo = async (options = {}) => {
     }
 };
 
+const userInfoByPk = async (pk, options = {}) => {
+    try {
+        const userData = await User.findByPk(pk, {
+            ...options,
+            attributes: { exclude: ['password'] },
+            include: [
+                {
+                    model: Image,
+                    attributes: ['path', 'description'],
+                },
+            ],
+        });
+        // Serialize data so the template can read it
+        return userData.get({ plain: true });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+
 const orgsCardInfo = async (options = {}) => {
     try {
         const orgData = await Organisation.findAll({
@@ -70,4 +90,5 @@ module.exports = {
     briefsCardInfo,
     usersCardInfo,
     orgsCardInfo,
+    userInfoByPk,
 };

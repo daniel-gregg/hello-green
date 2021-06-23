@@ -8,7 +8,6 @@ const briefFormHandler = async (event) => {
     const content = document.querySelector('#content').value;
     const briefType = document.querySelector('#briefType').value;
 
-
     if (briefType == 'edit') {
         try {
             const briefId = document.querySelector('#briefId').value;

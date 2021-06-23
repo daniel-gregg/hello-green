@@ -11,7 +11,7 @@ const bioFormHandler = async (event) => {
     const text = document.querySelector('#bio').value;
 
     console.log(text);
-    console.log(first_name)
+    console.log(first_name);
     const response = await fetch(`/bio/edit`, {
         method: 'PUT',
         body: JSON.stringify({

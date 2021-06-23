@@ -8,7 +8,7 @@ const { User } = require('../../models');
 // Otherwise the user will be sent an error
 router.post('/login', async (req, res) => {
     try {
-        console.log(req.body.email)
+        console.log(req.body.email);
         const user = await User.findOne({
             where: {
                 email: req.body.email,
